@@ -42,4 +42,9 @@ public class ApiController {
     public ResponseEntity<String> getRoutes(){
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("create_booking_supplier")
+    public ResponseEntity<String> createBookingSupplier(){
+        return ResponseEntity.ok("ok");
+    }
 }
