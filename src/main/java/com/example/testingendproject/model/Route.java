@@ -18,4 +18,12 @@ public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // AUTO_INCREMENT
     private long id;
+    private String destinationStart;
+    private String destinationEnd;
+    private String transportType;
+    private String estimatedDeparture;
+    private String estimatedArrival;
+    private long price;
+    private String contractor;
+    private long salePrice;
 }
