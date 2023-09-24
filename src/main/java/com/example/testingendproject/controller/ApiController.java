@@ -16,4 +16,9 @@ public class ApiController {
     public ResponseEntity<String> updateAccount(){
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("delete_account")
+    public ResponseEntity<String> deleteAccount(){
+        return ResponseEntity.ok("ok");
+    }
 }
