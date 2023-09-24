@@ -21,4 +21,9 @@ public class ApiController {
     public ResponseEntity<String> deleteAccount(){
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("add_booking")
+    public ResponseEntity<String> addBooking(){
+        return ResponseEntity.ok("ok");
+    }
 }
