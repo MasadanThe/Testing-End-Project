@@ -34,7 +34,7 @@ public class ApiController {
     }
 
     @PostMapping("update_sale")
-    public ResponseEntity<String> update_sale(){
+    public ResponseEntity<String> updateSale(){
         return ResponseEntity.ok("ok");
     }
 
