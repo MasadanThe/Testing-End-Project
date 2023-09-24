@@ -1,6 +1,7 @@
 package com.example.testingendproject.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,11 @@ public class ApiController {
 
     @PostMapping("update_sale")
     public ResponseEntity<String> update_sale(){
+        return ResponseEntity.ok("ok");
+    }
+
+    @GetMapping("get_routes")
+    public ResponseEntity<String> getRoutes(){
         return ResponseEntity.ok("ok");
     }
 }
