@@ -12,8 +12,8 @@ public class RouteService {
 
     }
 
-    public void getRoutes(){
-
+    public int getRoutes(){
+        return 0;
     }
 
     public void createBookingSupplier(){
