@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,4 +20,10 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // AUTO_INCREMENT
     private long id;
+    private String username;
+    private String contactInformation;
+    private String paymentInformation;
+    private String paymentHistory;
+    private String activeBookings;
+    private String accountType;
 }
