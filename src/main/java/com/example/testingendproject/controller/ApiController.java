@@ -11,4 +11,9 @@ public class ApiController {
     public ResponseEntity<String> createAccount(){
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("update_account")
+    public ResponseEntity<String> updateAccount(){
+        return ResponseEntity.ok("ok");
+    }
 }
