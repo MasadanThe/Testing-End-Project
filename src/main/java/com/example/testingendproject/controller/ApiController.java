@@ -31,4 +31,9 @@ public class ApiController {
     public ResponseEntity<String> deleteBooking(){
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("update_sale")
+    public ResponseEntity<String> update_sale(){
+        return ResponseEntity.ok("ok");
+    }
 }
