@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService{
         foundAccount.setContactInformation(account.getContactInformation());
         foundAccount.setPaymentHistory(account.getPaymentHistory());
         foundAccount.setPaymentInformation(account.getPaymentInformation());
-        createAccount(foundAccount);
+        accountRepository.save(foundAccount);
     }
 
     public void deleteAccount(String username){
@@ -61,7 +61,7 @@ public class AccountServiceImpl implements AccountService{
             foundAccount.setActiveBookings(foundAccount.getActiveBookings() + id + "," );
 
         }
-        createAccount(foundAccount);
+        updateAccount(foundAccount);
     }
 
     public void deleteBooking(String id, String username){
@@ -82,7 +82,7 @@ public class AccountServiceImpl implements AccountService{
            newBookingInformation = newBookingInformation.substring(0, newBookingInformation.length() - 1);
         }
         foundAccount.setActiveBookings(newBookingInformation);
-        createAccount(foundAccount);
+        updateAccount(foundAccount);
     }
 
     public Account findByUsername(String username){
