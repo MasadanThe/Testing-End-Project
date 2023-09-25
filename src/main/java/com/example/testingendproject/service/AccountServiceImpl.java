@@ -15,7 +15,7 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.save(account);
     }
 
-    public void updateAccount(){
+    public void updateAccount(Account account){
 
     }
 
