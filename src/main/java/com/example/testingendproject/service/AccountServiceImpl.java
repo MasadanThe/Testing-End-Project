@@ -19,7 +19,10 @@ public class AccountServiceImpl implements AccountService{
         Account foundAccount = findByUsername(account.getUsername());
         try
         {
+            //If the username is null it will create an error, therefor the account does not exist
             foundAccount.getUsername();
+            //Sometimes the found username is not null but not the same either
+            //If it is not the same the account doesn't exist
             if(!foundAccount.getUsername().equals(account.getUsername()))
             {
                 accountRepository.save(account);

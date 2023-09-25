@@ -22,8 +22,12 @@ public class ApiController {
 
     @PostMapping("create_account")
     public ResponseEntity<String> createAccount(Account account){
-        accountService.createAccount(account);
-        return ResponseEntity.ok("ok");
+        if(accountService.createAccount(account))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        //Going with always ok standard
+        return ResponseEntity.ok("User already exist");
     }
 
     @PostMapping("update_account")
