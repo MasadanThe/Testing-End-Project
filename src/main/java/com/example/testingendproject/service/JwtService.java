@@ -18,17 +18,4 @@ public class JwtService {
         return token;
     }
 
-    public boolean verifyJwtToken(String jwtToken){
-        try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256("totallySecret"))
-                    .withIssuer("auth0")
-                    .build();
-            DecodedJWT decodedJWT = verifier.verify(jwtToken);
-            return true;
-        }
-        catch (JWTVerificationException exception)
-        {
-            return false;
-        }
-    }
 }

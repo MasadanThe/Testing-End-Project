@@ -13,13 +13,7 @@ class JwtServiceTest {
     @Test
     void verifyGetJwtToken() {
 
-        assertEquals("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QifQ.4g0fpgEiD5n7PpYUkFbYBzwP7bKJ7K8vlYDiIVJMTR8",jwtService.getJwtToken("test"));
+        assertEquals("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpc3MiOiJ3ZUFyZUhlcmUifQ.VfCUCsAzsbTrmlOy7gVsusTkj031k6W-HQ788OJp8AE",jwtService.getJwtToken("test"));
     }
 
-    @Test
-    void confirmVerifyJwtToken() {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QifQ.4g0fpgEiD5n7PpYUkFbYBzwP7bKJ7K8vlYDiIVJMTR8";
-        assertEquals(true, jwtService.verifyJwtToken("4gthuyi9er3agdjsskjdlffdkl"));
-
-    }
 }
