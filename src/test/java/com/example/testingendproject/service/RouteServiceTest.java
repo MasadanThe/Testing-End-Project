@@ -42,6 +42,10 @@ class RouteServiceTest {
     void updateSale() {
     }
 
+    @Test
+    void getRoutes() {
+    }
+
 
     @Test
     void createBookingSupplier() {
