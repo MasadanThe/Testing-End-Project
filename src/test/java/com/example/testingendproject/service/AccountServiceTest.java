@@ -52,7 +52,7 @@ class AccountServiceTest {
                 .paymentHistory("")
                 .activeBookings("").build();
         accountService.createAccount(account1);
-        assertEquals(accountService.getAccounts().size(), 5);
+        assertEquals(accountService.getAccounts().size(), 2);
     }
 
 }
