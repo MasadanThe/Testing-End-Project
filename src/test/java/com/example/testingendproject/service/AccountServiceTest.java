@@ -31,8 +31,8 @@ class AccountServiceTest {
                 .accountType("ADMIN")
                 .contactInformation("8973045653")
                 .paymentInformation("435252432")
-                .paymentHistory("")
-                .activeBookings("").build();
+                .paymentHistory("342432,7675,322")
+                .activeBookings("1,5,4,3").build();
         accountService.createAccount(account1);
     }
 
@@ -62,8 +62,8 @@ class AccountServiceTest {
                 .accountType("ADMIN")
                 .contactInformation("8973045653")
                 .paymentInformation("435252432")
-                .paymentHistory("")
-                .activeBookings("").build();
+                .paymentHistory("342432,7675,322")
+                .activeBookings("1,5,4,3").build();
 
         accountService.updateAccount(account1);
         List<Account> accountList1 = accountService.getAccounts();
@@ -86,6 +86,15 @@ class AccountServiceTest {
         List<Account> accountList1 = accountService.getAccounts();
 
         assertEquals(1, accountList1.size());
+
+    }
+
+    @Test
+    void verifyThatBookingIsDeletedFromAccount() {
+
+        accountService.deleteBooking("1", "Mr.Cool");
+
+        assertEquals("5,4,3", accountService.findByUsername("Mr.cool").getActiveBookings());
 
     }
 

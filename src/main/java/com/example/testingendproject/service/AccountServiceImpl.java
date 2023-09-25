@@ -51,6 +51,10 @@ public class AccountServiceImpl implements AccountService{
 
     }
 
+    public Account findByUsername(String username){
+        return null;
+    }
+
     public List<Account> getAccounts(){
         return accountRepository.findAll();
     }
