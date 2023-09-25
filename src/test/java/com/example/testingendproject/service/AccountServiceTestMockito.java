@@ -4,11 +4,13 @@ import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.repository.RouteRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +42,12 @@ class AccountServiceTestMockito {
                 .activeBookings("").build();
 
         when(paymentExternal.checkPayment()).thenReturn("6457");
+        when(accountRepository.findByUsername("Mr.Cool")).thenReturn(account1);
 
 
-        accountService.addBooking(Long.valueOf(1), account1);
+        accountService.addBooking("1", account1);
 
         verify(paymentExternal, times(1)).checkPayment();
+        verify(accountRepository, times(1)).findByUsername(any());
     }
 }

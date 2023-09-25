@@ -13,7 +13,7 @@ public class AccountServiceImpl implements AccountService{
     @Autowired
     AccountRepository accountRepository;
 
-    @Autowired
+    @Autowired(required = false)
     PaymentExternal paymentExternal;
     public void createAccount(Account account){
         accountRepository.save(account);
@@ -53,12 +53,14 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.delete(foundAccount);
     }
 
-    public void addBooking(Long id, Account account){
+    public void addBooking(String id, Account account){
         Account foundAccount = accountRepository.findByUsername(account.getUsername());
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
-            //Separates payments with ','
+            //Separates payments and active bookings with ','
             foundAccount.setPaymentHistory(foundAccount.getPaymentHistory() + paymentCode + ",");
+            foundAccount.setActiveBookings(foundAccount.getActiveBookings() + id + "," );
+
         }
         createAccount(foundAccount);
     }
