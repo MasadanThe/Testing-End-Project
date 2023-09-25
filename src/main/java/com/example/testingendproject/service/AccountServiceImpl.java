@@ -15,8 +15,25 @@ public class AccountServiceImpl implements AccountService{
 
     @Autowired(required = false)
     PaymentExternal paymentExternal;
-    public void createAccount(Account account){
-        accountRepository.save(account);
+    public boolean createAccount(Account account){
+        Account foundAccount = findByUsername(account.getUsername());
+        try
+        {
+            foundAccount.getUsername();
+            if(!foundAccount.getUsername().equals(account.getUsername()))
+            {
+                accountRepository.save(account);
+                return true;
+            }
+            return false;
+
+        }
+        catch (Exception exception)
+        {
+            accountRepository.save(account);
+            return true;
+        }
+
     }
 
     public void updateAccount(Account account){

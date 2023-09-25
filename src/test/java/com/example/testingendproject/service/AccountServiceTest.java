@@ -45,14 +45,14 @@ class AccountServiceTest {
     @Test
     void verifyWeCanAddToTheDatabase() {
         var account1 = Account.builder()
-                .username("Mr.Cool2")
+                .username("Mr.Whatever")
                 .accountType("ADMIN")
                 .contactInformation("456")
                 .paymentInformation("23232")
                 .paymentHistory("")
                 .activeBookings("").build();
         accountService.createAccount(account1);
-        assertEquals(accountService.getAccounts().size(), 2);
+        assertEquals(2, accountService.getAccounts().size());
     }
 
     @Test
