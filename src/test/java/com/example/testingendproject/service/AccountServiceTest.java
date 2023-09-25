@@ -56,6 +56,19 @@ class AccountServiceTest {
     }
 
     @Test
+    void verifyWeCantAddAccountWithSameUsernameToTheDatabase() {
+        var account1 = Account.builder()
+                .username("Mr.Cool")
+                .accountType("ADMIN")
+                .contactInformation("456")
+                .paymentInformation("23232")
+                .paymentHistory("")
+                .activeBookings("").build();
+
+        assertEquals(true, accountService.createAccount(account1));
+    }
+
+    @Test
     void verifyThatUpdateAccountUpdatesInTheDatabase() {
         var account1 = Account.builder()
                 .username("Mr.Cool")
