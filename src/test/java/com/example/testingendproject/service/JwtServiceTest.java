@@ -11,7 +11,7 @@ class JwtServiceTest {
     JwtService jwtService;
 
     @Test
-    void getJwtToken() {
+    void verifyGetJwtToken() {
 
         assertEquals("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QifQ.4g0fpgEiD5n7PpYUkFbYBzwP7bKJ7K8vlYDiIVJMTR8",jwtService.getJwtToken("test"));
     }
