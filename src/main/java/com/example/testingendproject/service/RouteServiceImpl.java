@@ -8,14 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("routeService")
+@Service
 public class RouteServiceImpl implements RouteService{
 
-    @Autowired
+    @Autowired(required = false)
     RouteExternal routeExternal;
 
     @Autowired
     RouteRepository routeRepository;
+
+
 
     @Override
     public void updateSale(){

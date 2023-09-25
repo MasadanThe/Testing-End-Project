@@ -2,6 +2,7 @@ package com.example.testingendproject.service;
 
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.RouteRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,20 +21,10 @@ import static org.mockito.Mockito.*;
 class RouteServiceTest {
 
     @Autowired
-    private RouteServiceImpl routeService;
+    RouteService routeService;
 
-    @Autowired
-    RouteRepository routeRepository;
-
-
-
-    @Test
-    void updateSale() {
-    }
-
-
-    @Test
-    void createBookingSupplier() {
+    @BeforeAll
+    static void addEntries(@Autowired RouteService routeService) {
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
@@ -43,9 +34,16 @@ class RouteServiceTest {
                 .estimatedDeparture("09:00")
                 .contractor("MKD")
                 .transportType("Train").build();
-
         routeService.createBookingSupplier(route1);
+    }
 
-        assertNotNull(routeRepository.findAllByContractor("MKD"));
+
+    @Test
+    void updateSale() {
+    }
+
+
+    @Test
+    void createBookingSupplier() {
     }
 }

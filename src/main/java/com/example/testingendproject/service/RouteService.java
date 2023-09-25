@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@Service
 public interface RouteService {
 
     public void updateSale();
