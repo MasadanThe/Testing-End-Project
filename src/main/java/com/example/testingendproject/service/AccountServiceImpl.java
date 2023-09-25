@@ -52,7 +52,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public Account findByUsername(String username){
-        return null;
+        return accountRepository.findByUsername(username);
     }
 
     public List<Account> getAccounts(){
