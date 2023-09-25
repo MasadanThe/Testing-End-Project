@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface RouteService {
 
-    public void updateSale(Long id, Long salePrice);
+    public void updateSale(Long id, Long salePrice, String username);
     public List<Route> getRoutes();
 
     public void setRoutes();

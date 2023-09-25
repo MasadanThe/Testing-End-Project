@@ -21,11 +21,11 @@ public class RouteServiceImpl implements RouteService{
 
 
     @Override
-    public void updateSale(Long id, Long salePrice){
+    public void updateSale(Long id, Long salePrice, String username){
         List<Route> routeList = getRoutes();
         Route foundRoute = new Route();
         for (Route route: routeList) {
-            if (route.getId() == id){
+            if (route.getId() == id && route.getContractor().equals(username)){
                 route.setSalePrice(salePrice);
                 foundRoute = route;
             }
