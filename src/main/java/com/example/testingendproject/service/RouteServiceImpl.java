@@ -35,6 +35,6 @@ public class RouteServiceImpl implements RouteService{
     @Override
     public void createBookingSupplier(Route route){
 
-
+        routeRepository.save(route);
     }
 }
