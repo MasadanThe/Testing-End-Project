@@ -39,6 +39,6 @@ class AuthServiceImplTest {
                 .activeBookings("").build();
         when(accountService.findByUsername("Troll")).thenReturn(account1);
         authService.authenticate("Troll");
-        verify(accountService, times(2)).findByUsername(any());
+        verify(accountService, times(1)).findByUsername(any());
     }
 }
