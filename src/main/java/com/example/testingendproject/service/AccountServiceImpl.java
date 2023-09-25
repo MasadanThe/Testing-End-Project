@@ -19,17 +19,8 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.save(account);
     }
 
-    public void updateAccount(Long id, Account account){
-        //Gets all accounts and find the one by id
-        //Had problems finding by id in JPA that's why it is done manually
-        List<Account> accountList = getAccounts();
-        Account foundAccount = new Account();
-        for (Account account1: accountList) {
-            if (account1.getId() == id){
-                foundAccount = account1;
-            }
-
-        }
+    public void updateAccount(Account account){
+        Account foundAccount = accountRepository.findByUsername(account.getUsername());
         //Updates the information
         foundAccount.setUsername(account.getUsername());
         foundAccount.setActiveBookings(account.getActiveBookings());
