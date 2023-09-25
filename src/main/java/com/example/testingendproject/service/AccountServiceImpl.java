@@ -48,7 +48,24 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public void deleteBooking(String id, String username){
+        Account foundAccount = findByUsername(username);
+        //Splits the bookings on ','
+        String[] bookings = foundAccount.getActiveBookings().split(",");
+        String newBookingInformation = "";
 
+        //Loops through bookings and saves all id's of the bookings that should not be removed
+        for(int i = 0; i < bookings.length; i++){
+            if(!bookings[i].equals(id)){
+                newBookingInformation += bookings[i] + ",";
+            }
+        }
+        //If there is more bookings, remove the last ','
+        if(!newBookingInformation.isEmpty())
+        {
+            newBookingInformation.substring(0, newBookingInformation.length() - 1);
+        }
+        foundAccount.setActiveBookings(newBookingInformation);
+        createAccount(foundAccount);
     }
 
     public Account findByUsername(String username){
