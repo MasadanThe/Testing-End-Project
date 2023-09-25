@@ -42,4 +42,17 @@ class AccountServiceTest {
         assertNotNull(accountService.getAccounts());
     }
 
+    @Test
+    void verifyWeCanAddToTheDatabase() {
+        var account1 = Account.builder()
+                .username("Mr.Cool2")
+                .accountType("ADMIN")
+                .contactInformation("456")
+                .paymentInformation("23232")
+                .paymentHistory("")
+                .activeBookings("").build();
+        accountService.createAccount(account1);
+        assertEquals(accountService.getAccounts().size(), 5);
+    }
+
 }
