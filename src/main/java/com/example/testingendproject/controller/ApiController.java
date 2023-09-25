@@ -1,5 +1,9 @@
 package com.example.testingendproject.controller;
 
+import com.example.testingendproject.service.AccountService;
+import com.example.testingendproject.service.AuthService;
+import com.example.testingendproject.service.RouteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ApiController {
+
+    @Autowired
+    AuthService authService;
+    @Autowired
+    AccountService accountService;
+    @Autowired
+    RouteService routeService;
 
     @PostMapping("create_account")
     public ResponseEntity<String> createAccount(){
