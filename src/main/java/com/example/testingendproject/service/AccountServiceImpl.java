@@ -12,6 +12,9 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService{
     @Autowired
     AccountRepository accountRepository;
+
+    @Autowired
+    PaymentExternal paymentExternal;
     public void createAccount(Account account){
         accountRepository.save(account);
     }
@@ -51,7 +54,13 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public void addBooking(Long id, Account account){
-
+        Account foundAccount = accountRepository.findByUsername(account.getUsername());
+        String paymentCode = paymentExternal.checkPayment();
+        if(!paymentCode.equals("0")){
+            //Separates payments with ','
+            foundAccount.setPaymentHistory(foundAccount.getPaymentHistory() + paymentCode + ",");
+        }
+        createAccount(foundAccount);
     }
 
     public void deleteBooking(){
