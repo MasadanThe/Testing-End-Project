@@ -12,7 +12,7 @@ public interface AccountService {
     public void createAccount(Account account);
     public void updateAccount(Long id, Account account);
 
-    public void deleteAccount();
+    public void deleteAccount(Long id, Account account);
 
     public void addBooking();
 

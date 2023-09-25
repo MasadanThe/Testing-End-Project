@@ -36,7 +36,7 @@ public class AccountServiceImpl implements AccountService{
         createAccount(foundAccount);
     }
 
-    public void deleteAccount(){
+    public void deleteAccount(Long id, Account account){
 
     }
 
