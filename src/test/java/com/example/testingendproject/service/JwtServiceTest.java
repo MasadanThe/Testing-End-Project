@@ -12,5 +12,7 @@ class JwtServiceTest {
 
     @Test
     void getJwtToken() {
+
+        assertEquals("sdfewrewrwer",jwtService.getJwtToken("test"));
     }
 }
