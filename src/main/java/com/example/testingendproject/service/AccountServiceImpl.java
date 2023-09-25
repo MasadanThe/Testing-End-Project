@@ -1,10 +1,11 @@
 package com.example.testingendproject.service;
 
+import com.example.testingendproject.model.Account;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AccountServiceImpl {
-    public void createAccount(){
+    public void createAccount(Account account){
 
     }
 
