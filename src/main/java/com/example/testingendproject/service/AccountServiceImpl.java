@@ -47,7 +47,7 @@ public class AccountServiceImpl implements AccountService{
         createAccount(foundAccount);
     }
 
-    public void deleteBooking(){
+    public void deleteBooking(String id, String username){
 
     }
 

@@ -16,7 +16,7 @@ public interface AccountService {
 
     public void addBooking(String id, String username);
 
-    public void deleteBooking();
+    public void deleteBooking(String id, String username);
 
     public List<Account> getAccounts();
 }
