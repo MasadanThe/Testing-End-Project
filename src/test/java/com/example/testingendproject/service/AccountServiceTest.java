@@ -1,5 +1,6 @@
 package com.example.testingendproject.service;
 
+import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.RouteRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,6 +22,18 @@ import static org.mockito.Mockito.*;
 class AccountServiceTest {
 
     @Autowired
-    AccountService AccountService;
+    AccountService accountService;
+
+    @BeforeAll
+    static void addEntries(@Autowired AccountService accountService) {
+        var account1 = Account.builder()
+                .username("Mr.Cool")
+                .accountType("ADMIN")
+                .contactInformation("8973045653")
+                .paymentInformation("435252432")
+                .paymentHistory("")
+                .activeBookings("").build();
+        accountService.createAccount(account1);
+    }
 
 }
