@@ -12,7 +12,7 @@ public interface RouteService {
 
     public void updateSale();
 
-    public List<Route> setRoutes();
+    public void setRoutes();
 
     public void createBookingSupplier(Route route);
 }

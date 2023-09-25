@@ -25,13 +25,13 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public List<Route> setRoutes(){
+    public void setRoutes(){
         List<Route> routeList = new ArrayList<>();
 
         routeList.addAll(routeExternal.getRoutesFromSupplier1());
         routeList.addAll(routeExternal.getRoutesFromSupplier2());
         routeList.addAll(routeExternal.getRoutesFromSupplier3());
-        return routeList;
+
     }
 
     @Override
