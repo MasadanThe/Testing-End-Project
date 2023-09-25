@@ -25,6 +25,8 @@ class RouteServiceTest {
     @Mock
     RouteRepository routeRepository;
 
+    @Mock RouteExternal routeExternal;
+
 
     @Test
     void updateSale() {
