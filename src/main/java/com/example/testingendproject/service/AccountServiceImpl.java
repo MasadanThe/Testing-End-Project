@@ -20,7 +20,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public void updateAccount(Account account){
-        Account foundAccount = accountRepository.findByUsername(account.getUsername());
+        Account foundAccount = findByUsername(account.getUsername());
         //Updates the information
         foundAccount.setUsername(account.getUsername());
         foundAccount.setActiveBookings(account.getActiveBookings());
@@ -31,12 +31,12 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public void deleteAccount(String username){
-        Account account = accountRepository.findByUsername(username);
+        Account account = findByUsername(username);
         accountRepository.delete(account);
     }
 
     public void addBooking(String id, String username){
-        Account foundAccount = accountRepository.findByUsername(username);
+        Account foundAccount = findByUsername(username);
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','
