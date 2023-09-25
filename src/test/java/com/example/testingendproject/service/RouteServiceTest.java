@@ -34,7 +34,7 @@ class RouteServiceTest {
 
     @Test
     void verifyThatReturnedGetRoutesFromSupplierIsUsedWhenGetRoutes() {
-        var route = Route.builder()
+        var route1 = Route.builder()
                 .destinationEnd("Stockholm")
                 .destinationStart("Karlstad")
                 .price(500)
@@ -43,14 +43,44 @@ class RouteServiceTest {
                 .estimatedDeparture("10:00")
                 .contractor("MKD")
                 .transportType("Train").build();
-        List<Route> routeList = new ArrayList<Route>();
-        routeList.add(route);
+        List<Route> routeList1 = new ArrayList<Route>();
+        routeList1.add(route1);
 
-        when(routeExternal.getRoutesFromSupplier1()).thenReturn(routeList);
+        when(routeExternal.getRoutesFromSupplier1()).thenReturn(routeList1);
+
+        var route2 = Route.builder()
+                .destinationEnd("Karlskrona")
+                .destinationStart("Örebro")
+                .price(850)
+                .salePrice(800)
+                .estimatedArrival("17:00")
+                .estimatedDeparture("11:00")
+                .contractor("TGY")
+                .transportType("Bus").build();
+        List<Route> routeList2 = new ArrayList<Route>();
+        routeList2.add(route2);
+
+        when(routeExternal.getRoutesFromSupplier2()).thenReturn(routeList2);
+
+        var route3 = Route.builder()
+                .destinationEnd("Farstad")
+                .destinationStart("Eskilstuna")
+                .price(200)
+                .salePrice(200)
+                .estimatedArrival("00:00")
+                .estimatedDeparture("16:00")
+                .contractor("G95")
+                .transportType("Car").build();
+        List<Route> routeList3 = new ArrayList<Route>();
+        routeList3.add(route3);
+
+        when(routeExternal.getRoutesFromSupplier3()).thenReturn(routeList3);
 
         routeService.setRoutes();
 
         verify(routeExternal, times(1)).getRoutesFromSupplier1();
+        verify(routeExternal, times(1)).getRoutesFromSupplier2();
+        verify(routeExternal, times(1)).getRoutesFromSupplier3();
     }
 
     @Test
