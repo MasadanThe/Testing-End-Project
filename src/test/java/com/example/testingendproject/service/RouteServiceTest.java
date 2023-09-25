@@ -96,5 +96,7 @@ class RouteServiceTest {
                 .transportType("Train").build();
 
         routeService.createBookingSupplier(route1);
+
+        assertNotNull(routeRepository.find);
     }
 }
