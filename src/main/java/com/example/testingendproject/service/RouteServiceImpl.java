@@ -32,6 +32,9 @@ public class RouteServiceImpl implements RouteService{
         routeList.addAll(routeExternal.getRoutesFromSupplier2());
         routeList.addAll(routeExternal.getRoutesFromSupplier3());
 
+        for (Route route:routeList) {
+            createBookingSupplier(route);
+        }
     }
 
     @Override
