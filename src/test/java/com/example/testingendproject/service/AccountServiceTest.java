@@ -39,7 +39,7 @@ class AccountServiceTest {
     @Test
     void verifyWeGetAccountsFromGetAccounts() {
 
-        assertNull(accountService.getAccounts());
+        assertNotNull(accountService.getAccounts());
     }
 
 }
