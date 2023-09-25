@@ -1,6 +1,7 @@
 package com.example.testingendproject.service;
 
 import com.example.testingendproject.model.Route;
+import com.example.testingendproject.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,9 @@ public class RouteServiceImpl implements RouteService{
 
     @Autowired
     RouteExternal routeExternal;
+
+    @Autowired
+    RouteRepository routeRepository;
 
     @Override
     public void updateSale(){
@@ -30,6 +34,7 @@ public class RouteServiceImpl implements RouteService{
 
     @Override
     public void createBookingSupplier(Route route){
+
 
     }
 }
