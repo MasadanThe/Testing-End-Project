@@ -33,7 +33,7 @@ class RouteServiceTest {
     }
 
     @Test
-    void verifyThatReturnedListIsNotNull() {
+    void verifyThatReturnedGetRoutesFromSupplierIsUsedWhenGetRoutes() {
         var route = Route.builder()
                 .destinationEnd("Stockholm")
                 .destinationStart("Karlstad")
