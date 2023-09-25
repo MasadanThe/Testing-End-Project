@@ -48,7 +48,7 @@ class RouteServiceTest {
 
         when(routeExternal.getRoutesFromSupplier1()).thenReturn(routeList);
 
-        routeService.getRoutes();
+        routeService.setRoutes();
 
         verify(routeExternal, times(1)).getRoutesFromSupplier1();
     }
