@@ -1,5 +1,6 @@
 package com.example.testingendproject.controller;
 
+import com.example.testingendproject.model.Account;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AuthService;
 import com.example.testingendproject.service.RouteService;
@@ -20,7 +21,7 @@ public class ApiController {
     RouteService routeService;
 
     @PostMapping("create_account")
-    public ResponseEntity<String> createAccount(){
+    public ResponseEntity<String> createAccount(Account account){
         return ResponseEntity.ok("ok");
     }
 
