@@ -40,6 +40,12 @@ class RouteServiceTest {
 
     @Test
     void updateSale() {
+        List<Route> routeList1 = routeService.getRoutes();
+        routeService.updateSale(1, 450);
+        List<Route> routeList2 = routeService.getRoutes();
+
+        assertEquals(routeList1.get(0).getSalePrice(), routeList1.get(1).getSalePrice());
+
     }
 
     @Test
