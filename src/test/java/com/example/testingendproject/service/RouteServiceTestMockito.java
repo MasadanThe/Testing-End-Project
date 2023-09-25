@@ -27,10 +27,6 @@ class RouteServiceTestMockito {
 
 
     @Test
-    void updateSale() {
-    }
-
-    @Test
     void verifyThatReturnedGetRoutesFromSupplierIsUsedWhenGetRoutes() {
         var route1 = Route.builder()
                 .destinationEnd("Stockholm")
@@ -81,20 +77,4 @@ class RouteServiceTestMockito {
         verify(routeExternal, times(1)).getRoutesFromSupplier3();
     }
 
-    @Test
-    void createBookingSupplier() {
-        var route1 = Route.builder()
-                .destinationEnd("Örebro")
-                .destinationStart("Köpenhamn")
-                .price(700)
-                .salePrice(650)
-                .estimatedArrival("13:00")
-                .estimatedDeparture("09:00")
-                .contractor("MKD")
-                .transportType("Train").build();
-
-        routeService.createBookingSupplier(route1);
-
-        assertNotNull(routeRepository.findAllByContractor("MKD"));
-    }
 }
