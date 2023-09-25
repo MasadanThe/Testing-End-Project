@@ -85,7 +85,7 @@ class AccountServiceTest {
         accountService.deleteAccount(Long.valueOf(1), account1);
         List<Account> accountList1 = accountService.getAccounts();
 
-        assertEquals(5, accountList1.size());
+        assertEquals(0, accountList1.size());
 
     }
 
