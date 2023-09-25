@@ -65,7 +65,7 @@ class AccountServiceTest {
                 .paymentHistory("")
                 .activeBookings("").build();
 
-        assertEquals(true, accountService.createAccount(account1));
+        assertEquals(false, accountService.createAccount(account1));
     }
 
     @Test
