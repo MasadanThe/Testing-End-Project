@@ -97,6 +97,6 @@ class RouteServiceTest {
 
         routeService.createBookingSupplier(route1);
 
-        assertNotNull(routeRepository.find);
+        assertNotNull(routeRepository.findAllByContractor("TGF"));
     }
 }
