@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@Service
+
 public interface AccountService {
     public void createAccount(Account account);
     public void updateAccount();
