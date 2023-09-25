@@ -1,5 +1,6 @@
 package com.example.testingendproject.service;
 
+import com.example.testingendproject.repository.RouteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -14,6 +15,11 @@ class RouteServiceTest {
 
     @Mock
     private RouteService routeService;
+
+    @Mock
+    RouteRepository routeRepository;
+
+
     @Test
     void updateSale() {
     }
