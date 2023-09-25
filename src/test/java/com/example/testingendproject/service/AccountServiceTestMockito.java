@@ -45,7 +45,7 @@ class AccountServiceTestMockito {
         when(accountRepository.findByUsername("Mr.Cool")).thenReturn(account1);
 
 
-        accountService.addBooking("1", account1);
+        accountService.addBooking("1", account1.getUsername());
 
         verify(paymentExternal, times(1)).checkPayment();
         verify(accountRepository, times(1)).findByUsername(any());

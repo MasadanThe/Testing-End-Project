@@ -53,8 +53,8 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.delete(foundAccount);
     }
 
-    public void addBooking(String id, Account account){
-        Account foundAccount = accountRepository.findByUsername(account.getUsername());
+    public void addBooking(String id, String username){
+        Account foundAccount = accountRepository.findByUsername(username);
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','

@@ -14,7 +14,7 @@ public interface AccountService {
 
     public void deleteAccount(Long id, Account account);
 
-    public void addBooking(String id, Account account);
+    public void addBooking(String id, String username);
 
     public void deleteBooking();
 
