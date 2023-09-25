@@ -45,7 +45,7 @@ class RouteServiceTest {
     @Test
     void getRoutes() {
 
-        assertNull(routeService.getRoutes());
+        assertNotNull(routeService.getRoutes());
     }
 
 
