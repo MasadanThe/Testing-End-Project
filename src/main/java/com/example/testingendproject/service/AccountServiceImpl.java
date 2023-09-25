@@ -42,7 +42,7 @@ public class AccountServiceImpl implements AccountService{
         List<Account> accountList = getAccounts();
         Account foundAccount = new Account();
         for (Account account1: accountList) {
-            if (account1.getId() == id && foundAccount.getUsername().equals(account.getUsername())){
+            if (account1.getId() == id && account1.getUsername().equals(account.getUsername())){
                 foundAccount = account1;
             }
 
