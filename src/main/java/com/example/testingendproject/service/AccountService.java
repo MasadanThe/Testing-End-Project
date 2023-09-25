@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Service
 public interface AccountService {
     public void createAccount(Account account);
@@ -15,4 +17,6 @@ public interface AccountService {
     public void addBooking();
 
     public void deleteBooking();
+
+    public List<Account> getAccounts();
 }
