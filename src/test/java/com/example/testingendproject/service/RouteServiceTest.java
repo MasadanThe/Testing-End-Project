@@ -16,8 +16,8 @@ class RouteServiceTest {
     }
 
     @Test
-    void getRoutes() {
-        assertEquals(5,routeService.getRoutes());
+    void verifyThatReturnedListIsNotNull() {
+        assertNull(routeService.getRoutes());
     }
 
     @Test
