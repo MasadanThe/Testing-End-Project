@@ -25,6 +25,11 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
+    public List<Route> getRoutes(){
+        return null;
+    }
+
+    @Override
     public void setRoutes(){
         List<Route> routeList = new ArrayList<>();
 

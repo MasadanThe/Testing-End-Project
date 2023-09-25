@@ -11,6 +11,7 @@ import java.util.List;
 public interface RouteService {
 
     public void updateSale();
+    public List<Route> getRoutes();
 
     public void setRoutes();
 
