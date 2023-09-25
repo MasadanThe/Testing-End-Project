@@ -1,6 +1,9 @@
 package com.example.testingendproject.service;
 
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
@@ -16,6 +19,16 @@ public class JwtService {
     }
 
     public boolean verifyJwtToken(String jwtToken){
-        return false;
+        try {
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256("totallySecret"))
+                    .withIssuer("auth0")
+                    .build();
+            DecodedJWT decodedJWT = verifier.verify(jwtToken);
+            return true;
+        }
+        catch (JWTVerificationException exception)
+        {
+            return false;
+        }
     }
 }
