@@ -9,17 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Service
-public class RouteService {
+public interface RouteService {
 
-    public void updateSale(){
+    public void updateSale();
 
-    }
+    public List<Route> getRoutes();
 
-    public List<Route> getRoutes(){
-        return null;
-    }
-
-    public void createBookingSupplier(){
-
-    }
+    public void createBookingSupplier();
 }
