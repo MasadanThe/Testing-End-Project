@@ -3,6 +3,7 @@ package com.example.testingendproject.service;
 import com.example.testingendproject.model.Route;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("routeService")
@@ -15,7 +16,10 @@ public class RouteServiceImpl implements RouteService{
 
     @Override
     public List<Route> getRoutes(){
-        return null;
+        List<Route> routeList = new ArrayList<>();
+
+        routeList.addAll(getRoutesFromSupplier1());
+        return routeList;
     }
     @Override
     public List<Route> getRoutesFromSupplier1(){
