@@ -36,4 +36,10 @@ class AccountServiceTest {
         accountService.createAccount(account1);
     }
 
+    @Test
+    void verifyWeGetAccountsFromGetAccounts() {
+
+        assertNotNull(accountService.getAccounts());
+    }
+
 }
