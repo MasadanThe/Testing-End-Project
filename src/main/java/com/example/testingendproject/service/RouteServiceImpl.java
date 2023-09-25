@@ -18,24 +18,8 @@ public class RouteServiceImpl implements RouteService{
     public List<Route> getRoutes(){
         List<Route> routeList = new ArrayList<>();
 
-        routeList.addAll(getRoutesFromSupplier1());
+        routeList.add(getRoutesFromSupplier1());
         return routeList;
-    }
-    @Override
-    public List<Route> getRoutesFromSupplier1(){
-        return null;
-    }
-    @Override
-    public List<Route> getRoutesFromSupplier2(){
-        return null;
-    }
-    @Override
-    public List<Route> getRoutesFromSupplier3(){
-        return null;
-    }
-    @Override
-    public List<Route> getRoutesFromSupplier4(){
-        return null;
     }
 
     @Override
