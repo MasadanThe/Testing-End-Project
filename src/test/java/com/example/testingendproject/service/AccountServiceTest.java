@@ -45,7 +45,7 @@ class AccountServiceTest {
     @Test
     void verifyWeCanAddToTheDatabase() {
         var account1 = Account.builder()
-                .username("Mr.Whatever")
+                .username("Mr.Cool2")
                 .accountType("ADMIN")
                 .contactInformation("456")
                 .paymentInformation("23232")
