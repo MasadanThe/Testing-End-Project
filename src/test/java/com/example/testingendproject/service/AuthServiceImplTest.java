@@ -26,6 +26,8 @@ class AuthServiceImplTest {
 
     @Mock
     AccountService accountService;
+    @Mock
+    JwtService jwtService;
     @Test
     void verifyAuthentication() {
         var account1 = Account.builder()
