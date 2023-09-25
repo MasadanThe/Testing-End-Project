@@ -22,7 +22,7 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public List<Route> getRoutes(){
+    public List<Route> setRoutes(){
         List<Route> routeList = new ArrayList<>();
 
         routeList.addAll(routeExternal.getRoutesFromSupplier1());
