@@ -22,6 +22,7 @@ public class ApiController {
 
     @PostMapping("create_account")
     public ResponseEntity<String> createAccount(Account account){
+        accountService.createAccount(account);
         return ResponseEntity.ok("ok");
     }
 
