@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RouteServiceTest {
@@ -43,6 +44,9 @@ class RouteServiceTest {
         List<Route> routeList = new ArrayList<Route>();
         routeList.add(route);
 
+        when(routeService.getRoutesFromSupplier1().thenReturn(routeList));
+
+        verify(routeService, times(1)).getRoutes();
     }
 
     @Test
