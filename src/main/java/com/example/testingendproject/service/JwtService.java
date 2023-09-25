@@ -6,8 +6,6 @@ import com.auth0.jwt.JWT;
 
 @Service
 public class JwtService {
-    @Autowired(required = false)
-    AuthService authService;
 
     public String getJwtToken(String username){
         return null;
