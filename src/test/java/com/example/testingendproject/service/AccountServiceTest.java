@@ -68,7 +68,7 @@ class AccountServiceTest {
         accountService.updateAccount(Long.valueOf(1), account1);
         List<Account> accountList1 = accountService.getAccounts();
 
-        assertEquals("Dina", accountList1.get(0).getUsername());
+        assertEquals("Mr.Nine", accountList1.get(0).getUsername());
 
     }
 
