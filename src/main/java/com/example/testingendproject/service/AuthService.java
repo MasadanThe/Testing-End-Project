@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AuthService {
-    public boolean authenticate(String username);
+    public String authenticate(String username);
 }
