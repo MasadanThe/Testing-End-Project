@@ -39,18 +39,9 @@ public class AccountServiceImpl implements AccountService{
         createAccount(foundAccount);
     }
 
-    public void deleteAccount(Long id, Account account){
-        //Gets all accounts and find the one by id
-        //Had problems finding by id in JPA that's why it is done manually
-        List<Account> accountList = getAccounts();
-        Account foundAccount = new Account();
-        for (Account account1: accountList) {
-            if (account1.getId() == id && account1.getUsername().equals(account.getUsername())){
-                foundAccount = account1;
-            }
-
-        }
-        accountRepository.delete(foundAccount);
+    public void deleteAccount(String username){
+        Account account = accountRepository.findByUsername(username);
+        accountRepository.delete(account);
     }
 
     public void addBooking(String id, String username){
