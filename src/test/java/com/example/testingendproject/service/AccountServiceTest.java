@@ -68,24 +68,24 @@ class AccountServiceTest {
         accountService.updateAccount(Long.valueOf(1), account1);
         List<Account> accountList1 = accountService.getAccounts();
 
-        assertEquals("Mr.Nine", accountList1.get(1).getUsername());
+        assertEquals("Mr.Nine", accountList1.get(0).getUsername());
 
     }
 
     @Test
     void verifyThatAccountIsDeleted() {
         var account1 = Account.builder()
-                .username("Mr.Cool")
+                .username("Mr.Cool2")
                 .accountType("ADMIN")
                 .contactInformation("8973045653")
                 .paymentInformation("435252432")
                 .paymentHistory("")
                 .activeBookings("").build();
 
-        accountService.deleteAccount(Long.valueOf(1), account1);
+        accountService.deleteAccount(Long.valueOf(2), account1);
         List<Account> accountList1 = accountService.getAccounts();
 
-        assertEquals(0, accountList1.size());
+        assertEquals(1, accountList1.size());
 
     }
 
