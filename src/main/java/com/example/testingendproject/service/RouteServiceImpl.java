@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RouteServiceImpl implements RouteService{
@@ -21,7 +22,16 @@ public class RouteServiceImpl implements RouteService{
 
     @Override
     public void updateSale(Long id, Long salePrice){
+        List<Route> routeList = getRoutes();
+        Route foundRoute = new Route();
+        for (Route route: routeList) {
+            if (route.getId() == id){
+                route.setSalePrice(salePrice);
+                foundRoute = route;
+            }
 
+        }
+        createBookingSupplier(foundRoute);
     }
 
     @Override
