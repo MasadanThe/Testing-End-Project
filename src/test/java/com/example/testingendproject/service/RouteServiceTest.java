@@ -43,7 +43,7 @@ class RouteServiceTest {
         routeService.updateSale(Long.valueOf(1), Long.valueOf(200));
         List<Route> routeList1 = routeService.getRoutes();
 
-        assertEquals(700, routeList1.get(0).getSalePrice());
+        assertEquals(200, routeList1.get(0).getSalePrice());
 
     }
 
