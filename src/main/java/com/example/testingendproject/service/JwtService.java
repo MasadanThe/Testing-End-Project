@@ -12,7 +12,10 @@ public class JwtService {
         String token = JWT.create()
                 .withClaim("username", username)
                 .sign(Algorithm.HMAC256("totallySecret"));
-
         return token;
+    }
+
+    public boolean verifyJwtToken(String jwtToken){
+        return false;
     }
 }
