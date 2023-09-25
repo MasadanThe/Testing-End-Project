@@ -62,7 +62,7 @@ public class AccountServiceImpl implements AccountService{
         //If there is more bookings, remove the last ','
         if(!newBookingInformation.isEmpty())
         {
-            newBookingInformation.substring(0, newBookingInformation.length() - 1);
+           newBookingInformation = newBookingInformation.substring(0, newBookingInformation.length() - 1);
         }
         foundAccount.setActiveBookings(newBookingInformation);
         createAccount(foundAccount);
