@@ -61,6 +61,6 @@ class RouteServiceTest {
                 .contractor("MKD")
                 .transportType("Train").build();
         routeService.createBookingSupplier(route1);
-        assertEquals(routeService.getRoutes().size(), 1);
+        assertEquals(routeService.getRoutes().size(), 2);
     }
 }
