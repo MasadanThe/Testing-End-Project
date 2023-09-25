@@ -5,24 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
-public class AccountService {
-    public void createAccount(){
+public interface AccountService {
+    public void createAccount();
+    public void updateAccount();
 
-    }
+    public void deleteAccount();
 
-    public void updateAccount(){
+    public void addBooking();
 
-    }
-
-    public void deleteAccount(){
-
-    }
-
-    public void addBooking(){
-
-    }
-
-    public void deleteBooking(){
-
-    }
+    public void deleteBooking();
 }
