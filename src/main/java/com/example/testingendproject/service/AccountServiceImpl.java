@@ -50,7 +50,7 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.delete(foundAccount);
     }
 
-    public void addBooking(){
+    public void addBooking(Long id, Account account){
 
     }
 
