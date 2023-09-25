@@ -20,7 +20,7 @@ public class RouteServiceImpl implements RouteService{
 
 
     @Override
-    public void updateSale(){
+    public void updateSale(Long id, Long salePrice){
 
     }
 
