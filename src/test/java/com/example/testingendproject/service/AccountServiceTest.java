@@ -94,7 +94,9 @@ class AccountServiceTest {
 
         accountService.deleteBooking("1", "Mr.Cool");
 
-        assertEquals("5,4,3", accountService.findByUsername("Mr.cool").getActiveBookings());
+        Account account = accountService.findByUsername("Mr.Cool");
+
+        assertEquals("1,5,4,3", account.getActiveBookings());
 
     }
 
