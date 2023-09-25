@@ -28,4 +28,14 @@ class AccountServiceTestMockito {
 
 
 
+    @Test
+    void verifyThatPaymentGoesThrough() {
+
+        when(paymentExternal.checkPayment()).thenReturn("6457");
+
+
+        accountService.addBooking();
+
+        verify(paymentExternal, times(1)).checkPayment();
+    }
 }
