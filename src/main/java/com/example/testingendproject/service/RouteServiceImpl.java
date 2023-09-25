@@ -29,7 +29,7 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public void createBookingSupplier(){
+    public void createBookingSupplier(Route route){
 
     }
 }
