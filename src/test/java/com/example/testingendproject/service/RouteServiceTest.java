@@ -39,7 +39,7 @@ class RouteServiceTest {
 
 
     @Test
-    void updateSale() {
+    void verifyThatUpdatePriceUpdatesInTheDatabase() {
         routeService.updateSale(Long.valueOf(1), Long.valueOf(200));
         List<Route> routeList1 = routeService.getRoutes();
 
@@ -48,14 +48,14 @@ class RouteServiceTest {
     }
 
     @Test
-    void getRoutes() {
+    void verifyWeGetRoutesFromGetRoutes() {
 
         assertNotNull(routeService.getRoutes());
     }
 
 
     @Test
-    void createBookingSupplier() {
+    void verifyWeCanAddToTheDatabase() {
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
