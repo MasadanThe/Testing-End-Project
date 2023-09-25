@@ -42,7 +42,7 @@ class AccountServiceTestMockito {
         when(paymentExternal.checkPayment()).thenReturn("6457");
 
 
-        accountService.addBooking(1, account1);
+        accountService.addBooking(Long.valueOf(1), account1);
 
         verify(paymentExternal, times(1)).checkPayment();
     }
