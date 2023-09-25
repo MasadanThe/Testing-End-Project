@@ -12,6 +12,10 @@ public class RouteServiceImpl implements RouteService{
 
     @Autowired
     RouteExternal routeExternal;
+
+    public RouteServiceImpl(){
+
+    }
     @Override
     public void updateSale(){
 
