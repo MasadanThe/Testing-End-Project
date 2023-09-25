@@ -32,6 +32,6 @@ public class AccountServiceImpl {
     }
 
     public List<Account> getAccounts(){
-        return null;
+        return accountRepository.findAll();
     }
 }
