@@ -21,7 +21,7 @@ public class RouteServiceImpl implements RouteService{
     public List<Route> getRoutes(){
         List<Route> routeList = new ArrayList<>();
 
-        routeList.add(getRoutesFromSupplier1());
+        routeList.addAll(routeExternal.getRoutesFromSupplier1());
         return routeList;
     }
 

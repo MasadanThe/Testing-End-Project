@@ -46,9 +46,11 @@ class RouteServiceTest {
         List<Route> routeList = new ArrayList<Route>();
         routeList.add(route);
 
-        when(routeService.getRoutesFromSupplier1().then);
+        when(routeExternal.getRoutesFromSupplier1()).thenReturn(routeList);
 
-        verify(routeService, times(1)).getRoutes();
+        routeService.getRoutes();
+
+        verify(routeExternal, times(1)).getRoutesFromSupplier1();
     }
 
     @Test
