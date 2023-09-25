@@ -40,7 +40,7 @@ class RouteServiceTest {
 
     @Test
     void verifyThatUpdatePriceUpdatesInTheDatabase() {
-        routeService.updateSale(Long.valueOf(1), Long.valueOf(200), "MKB");
+        routeService.updateSale(Long.valueOf(1), Long.valueOf(200), "MKD");
         List<Route> routeList1 = routeService.getRoutes();
 
         assertEquals(200, routeList1.get(0).getSalePrice());
