@@ -12,7 +12,7 @@ public class AccountServiceImpl implements AccountService{
     @Autowired
     AccountRepository accountRepository;
     public void createAccount(Account account){
-
+        accountRepository.save(account);
     }
 
     public void updateAccount(){
