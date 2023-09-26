@@ -73,4 +73,9 @@ class AccountServiceTestMockito {
     void verifyThatYouCantAddABookingWithoutUsername(){
         assertEquals(false, accountService.addBooking("8",""));
     }
+
+    @Test
+    void verifyThatYouCantAddABookingWithoutPaymentInformation(){
+        assertEquals(true, accountService.addBooking("8","Mr.Kind"));
+    }
 }
