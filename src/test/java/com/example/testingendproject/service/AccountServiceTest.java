@@ -194,7 +194,7 @@ class AccountServiceTest {
     @Test
     void verifyWeCantAddABookingForAUserWithoutPaymentInformation() {
 
-        assertEquals(true, accountService.addBooking("55", "Mr.Gostra"));
+        assertEquals(false, accountService.addBooking("55", "Mr.Gostra"));
 
     }
 
