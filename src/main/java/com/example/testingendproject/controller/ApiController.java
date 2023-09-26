@@ -54,8 +54,12 @@ public class ApiController {
     }
 
     @PostMapping("add_booking")
-    public ResponseEntity<String> addBooking(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<String> addBooking(@RequestBody FastBooking fastBooking){
+        if(accountService.addBooking(fastBooking.getId(), fastBooking.getUsername()))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("delete_booking")
