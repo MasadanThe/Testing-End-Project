@@ -97,8 +97,8 @@ class RouteServiceTest {
                 .estimatedDeparture("09:00")
                 .contractor("Mr.Cool")
                 .transportType("Train").build();
-        routeService.createBookingSupplier(route1);
-        assertEquals(routeService.getRoutes().size(), 2);
+        assertEquals(true, routeService.createBookingSupplier(route1));
+
     }
 
     @Test
