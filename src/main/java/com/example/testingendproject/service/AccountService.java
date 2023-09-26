@@ -14,9 +14,9 @@ public interface AccountService {
 
     public boolean deleteAccount(String username);
 
-    public void addBooking(String id, String username);
+    public boolean addBooking(String id, String username);
 
-    public void deleteBooking(String id, String username);
+    public boolean deleteBooking(String id, String username);
     public Account findByUsername(String username);
 
     public List<Account> getAccounts();

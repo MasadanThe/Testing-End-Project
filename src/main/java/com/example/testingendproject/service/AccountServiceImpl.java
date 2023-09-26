@@ -57,7 +57,7 @@ public class AccountServiceImpl implements AccountService{
         return true;
     }
 
-    public void addBooking(String id, String username){
+    public boolean addBooking(String id, String username){
         Account foundAccount = findByUsername(username);
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
@@ -67,9 +67,11 @@ public class AccountServiceImpl implements AccountService{
 
         }
         updateAccount(foundAccount);
+
+        return true;
     }
 
-    public void deleteBooking(String id, String username){
+    public boolean deleteBooking(String id, String username){
         Account foundAccount = findByUsername(username);
         //Splits the bookings on ','
         String[] bookings = foundAccount.getActiveBookings().split(",");
@@ -88,6 +90,7 @@ public class AccountServiceImpl implements AccountService{
         }
         foundAccount.setActiveBookings(newBookingInformation);
         updateAccount(foundAccount);
+        return true;
     }
 
     public Account findByUsername(String username){
