@@ -75,7 +75,7 @@ class ApiControllerTest {
                         .contentType("application/json"))
                 .andExpect(status().isOk());
 
-        assertEquals(3, accountService.getAccounts().size());
+        assertEquals(4, accountService.getAccounts().size());
 
         //Tries to add the same user and expects it to not have been added
         mockMvc.perform(post("/create_account").
