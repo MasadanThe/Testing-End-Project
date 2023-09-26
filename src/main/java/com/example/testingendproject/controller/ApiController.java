@@ -4,6 +4,7 @@ import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.FastBooking;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AuthService;
+import com.example.testingendproject.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class ApiController {
     AuthService authService;
     @Autowired(required = false)
     AccountService accountService;
+
+    @Autowired(required = false)
+    RouteService routeService;
 
     @PostMapping("create_account")
     public ResponseEntity<String> createAccount(@RequestBody Account account){
@@ -72,8 +76,12 @@ public class ApiController {
     }
 
     @PostMapping("update_sale")
-    public ResponseEntity<String> updateSale(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<String> updateSale(@RequestBody Long id, Long salePrice, String username){
+        if(routeService.updateSale(id, salePrice, username))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("get_routes")
