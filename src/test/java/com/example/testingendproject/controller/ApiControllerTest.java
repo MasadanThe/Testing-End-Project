@@ -1,12 +1,14 @@
 package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
+import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AccountServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,9 +24,13 @@ class ApiControllerTest {
 
     @Autowired
     MockMvc mockMvc;
+    @Autowired
+    AccountService accountService;
+    @Autowired
+    AccountRepository accountRepository;
 
     @BeforeAll
-    static void addAlarms(@Autowired AccountService accountService) {
+    static void addAccount(@Autowired AccountService accountService) {
         accountService.createAccount(new Account("Test", "435534534", "432243342", "2", "3", "User"));
     }
     @Test
@@ -32,6 +38,11 @@ class ApiControllerTest {
         mockMvc.perform(post("/create_account").
                 content(asJsonString(new Account("Test", "435534534", "432243342", "2", "3", "User"))))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void verifyAccountCount(){
+        assertEquals(3, accountRepository.findAll().size());
     }
 
 
