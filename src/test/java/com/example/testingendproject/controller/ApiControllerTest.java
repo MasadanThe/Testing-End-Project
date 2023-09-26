@@ -166,7 +166,6 @@ class ApiControllerTest {
 
     void endToEndGetRoutes() throws Exception {
 
-        //Adds a new user and expects a user to be added
         MvcResult result = mockMvc.perform(get("/get_routes"))
                 .andExpect(status().isOk()).andReturn();
 
