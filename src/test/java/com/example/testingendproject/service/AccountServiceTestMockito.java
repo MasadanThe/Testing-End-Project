@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +19,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class AccountServiceTestMockito {
 
     @InjectMocks
-    private AccountService accountService  = new AccountServiceImpl();
-
-    @Mock
-    AccountRepository accountRepository;
+    @Autowired
+    AccountService accountService  = new AccountServiceImpl();
 
     @Mock PaymentExternal paymentExternal;
 
@@ -44,21 +44,12 @@ class AccountServiceTestMockito {
 
     @Test
     void verifyThatPaymentGoesThrough() {
-        var account1 = Account.builder()
-                .username("Mr.Cool")
-                .accountType("ADMIN")
-                .contactInformation("8973045653")
-                .paymentInformation("435252432")
-                .paymentHistory("")
-                .activeBookings("").build();
 
         when(paymentExternal.checkPayment(any())).thenReturn("6457");
-        when(accountRepository.findByUsername("Mr.Cool")).thenReturn(account1);
 
 
-        accountService.addBooking("1", account1.getUsername());
+        accountService.addBooking("7","Mr.Cool");
 
         verify(paymentExternal, times(1)).checkPayment(any());
-        verify(accountRepository, times(1)).findByUsername(any());
     }
 }
