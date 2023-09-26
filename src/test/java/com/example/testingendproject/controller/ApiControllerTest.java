@@ -145,7 +145,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void updateSale() throws Exception {
+    void endToEndUpdateSale() throws Exception {
 
         UpdateSale updateSale = new UpdateSale(Long.valueOf(1), Long.valueOf(39),  "MKD");
         //Adds a new user and expects a user to be added
