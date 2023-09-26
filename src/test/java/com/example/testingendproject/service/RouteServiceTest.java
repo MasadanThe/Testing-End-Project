@@ -111,6 +111,21 @@ class RouteServiceTest {
     }
 
     @Test
+    void verifyWeCantAddToTheDatabaseWithNoContractorName() {
+        var route1 = Route.builder()
+                .destinationEnd("Örebro")
+                .destinationStart("Köpenhamn")
+                .price(700)
+                .salePrice(650)
+                .estimatedArrival("13:00")
+                .estimatedDeparture("09:00")
+                .contractor("")
+                .transportType("Train").build();
+        assertEquals(true, routeService.createBookingSupplier(route1));
+
+    }
+
+    @Test
     void verifyWeCantAddNullToTheDatabase() {
 
         assertEquals(false, routeService.createBookingSupplier(null));
