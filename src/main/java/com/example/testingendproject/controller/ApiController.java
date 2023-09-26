@@ -2,6 +2,7 @@ package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.FastBooking;
+import com.example.testingendproject.model.Route;
 import com.example.testingendproject.model.UpdateSale;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AuthService;
@@ -86,8 +87,8 @@ public class ApiController {
     }
 
     @GetMapping("get_routes")
-    public ResponseEntity<String> getRoutes(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<List<Route>> getRoutes(){
+        return ResponseEntity.ok(routeService.getRoutes());
     }
 
     @PostMapping("create_booking_supplier")
