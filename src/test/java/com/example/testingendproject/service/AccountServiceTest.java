@@ -127,6 +127,23 @@ class AccountServiceTest {
     }
 
     @Test
+    void verifyThatWeCantDeleteAccountThatDoesntExist() {
+        var account1 = Account.builder()
+                .username("Mr.NotExist")
+                .accountType("ADMIN")
+                .contactInformation("8973045653")
+                .paymentInformation("435252432")
+                .paymentHistory("")
+                .activeBookings("").build();
+
+        accountService.deleteAccount(account1.getUsername());
+        List<Account> accountList1 = accountService.getAccounts();
+
+        assertEquals(1, accountList1.size());
+
+    }
+
+    @Test
     void verifyThatBookingIsDeletedFromAccount() {
 
         accountService.deleteBooking("1", "Mr.Cool");
