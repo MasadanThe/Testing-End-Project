@@ -38,6 +38,15 @@ class RouteServiceTest {
                 .activeBookings("1,5,4,3").build();
         accountService.createAccount(account1);
 
+        var account2 = Account.builder()
+                .username("Mr.Cool")
+                .accountType("ADMIN")
+                .contactInformation("8973045653")
+                .paymentInformation("")
+                .paymentHistory("342432,7675,322")
+                .activeBookings("").build();
+        accountService.createAccount(account2);
+
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
