@@ -39,6 +39,12 @@ class ApiControllerTestMockito {
     @Mock
     MockMvc mockMvc;
 
+    @BeforeAll
+    static void addAccount(@Autowired AccountService accountService) {
+        boolean secondAccount = accountService.createAccount(new Account("Test24", "435534534", "432243342", "2", "5,3", "User"));
+        assertEquals(true, secondAccount);
+    }
+
 
 
     @Test
