@@ -12,7 +12,7 @@ public interface AccountService {
     public boolean createAccount(Account account);
     public boolean updateAccount(Account account);
 
-    public void deleteAccount(String username);
+    public boolean deleteAccount(String username);
 
     public void addBooking(String id, String username);
 

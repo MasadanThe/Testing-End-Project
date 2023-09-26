@@ -47,13 +47,14 @@ public class AccountServiceImpl implements AccountService{
         return true;
     }
 
-    public void deleteAccount(String username){
+    public boolean deleteAccount(String username){
         Account foundAccount = findByUsername(username);
         if(foundAccount == null || foundAccount.getUsername().isEmpty())
         {
-
+            return false;
         }
-        accountRepository.delete(account);
+        accountRepository.delete(foundAccount);
+        return true;
     }
 
     public void addBooking(String id, String username){
