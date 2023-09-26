@@ -96,7 +96,7 @@ class RouteServiceTest {
     }
 
     @Test
-    void verifyWeCanAddToTheDatabaseAsNonContractor() {
+    void verifyWeCantAddToTheDatabaseAsNonContractor() {
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
@@ -106,7 +106,7 @@ class RouteServiceTest {
                 .estimatedDeparture("09:00")
                 .contractor("Mr.Cool")
                 .transportType("Train").build();
-        assertEquals(true, routeService.createBookingSupplier(route1));
+        assertEquals(false, routeService.createBookingSupplier(route1));
 
     }
 
