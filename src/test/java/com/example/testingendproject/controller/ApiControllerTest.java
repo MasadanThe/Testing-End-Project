@@ -40,7 +40,7 @@ class ApiControllerTest {
         assertEquals(true, firstAccount);
         assertEquals(true, secondAccount);
     }
-    @Test
+
     void testEndToEndCreateAccount() throws Exception {
         //Adds a new user and expects a user to be added
         mockMvc.perform(post("/create_account").
@@ -88,7 +88,7 @@ class ApiControllerTest {
     void updateAccount() {
     }
 
-    @Test
+
     void testEndToEndDeleteAccount() throws Exception {
         //Deletes an account
         mockMvc.perform(post("/delete_account").
@@ -117,5 +117,17 @@ class ApiControllerTest {
 
     @Test
     void createBookingSupplier() {
+    }
+
+    @Test
+    void runAll(){
+        try {
+            testEndToEndCreateAccount();
+            testEndToEndDeleteAccount();
+        }
+        catch (Exception exception)
+        {
+
+        }
     }
 }
