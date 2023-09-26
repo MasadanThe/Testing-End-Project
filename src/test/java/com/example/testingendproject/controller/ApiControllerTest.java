@@ -175,11 +175,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void getRoutes() {
-    }
-
-    @Test
-    void createBookingSupplier() {
+    void endToEndCreateBookingSupplier() {
     }
 
     //One method that runs the tests in a special order so they don't get wrong data.
