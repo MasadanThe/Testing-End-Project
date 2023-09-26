@@ -80,6 +80,11 @@ public class ApiController {
 
     @GetMapping("get_routes")
     public ResponseEntity<List<Route>> getRoutes(){
+        List<Route> routeList = routeService.getRoutes();
+        if (routeList.isEmpty())
+        {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(routeService.getRoutes());
     }
 
