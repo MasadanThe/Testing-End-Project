@@ -32,14 +32,6 @@ public class ApiController {
         }
         return ResponseEntity.badRequest().build();
     }
-    @GetMapping("get_accounts")
-    public ResponseEntity<List<Account>> getAccounts(){
-        List<Account> accountList = accountService.getAccounts();
-        if (accountList.size() > 0){
-            return ResponseEntity.ok(accountList);
-        }
-            return ResponseEntity.badRequest().build();
-    }
 
     @PostMapping("update_account")
     public ResponseEntity<String> updateAccount(@RequestBody Account account){
