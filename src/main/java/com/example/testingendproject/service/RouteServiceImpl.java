@@ -64,7 +64,14 @@ public class RouteServiceImpl implements RouteService{
     public boolean createBookingSupplier(Route route){
 
         //If it is not your route and you are not a contractor
-        if (route == null && accountService.findByUsername(route.getContractor()) == null && accountService.findByUsername(route.getContractor()).equals(""))
+        if (route == null)
+        {
+            return false;
+        }
+        if (accountService.findByUsername(route.getContractor()) == null){
+            return false;
+        }
+        if (accountService.findByUsername(route.getContractor()).equals(""))
         {
             return false;
         }
