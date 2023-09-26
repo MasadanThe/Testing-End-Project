@@ -86,12 +86,16 @@ class ApiControllerTest {
 
 
     void updateAccount() throws Exception {
+        Account newAccount = new Account("Test24", "86778876", "7688678", "2", "3", "User");
         //Adds a new user and expects a user to be added
         mockMvc.perform(post("/update_account").
-                        content(asJsonString(new Account("Test24", "86778876", "7688678", "2", "3", "User")))
+                        content(asJsonString(newAccount))
                         .contentType("application/json"))
                 .andExpect(status().isBadRequest());
 
+        Account account = accountService.findByUsername("Test24");
+        account.setAccountType("ADMIN");
+        assertEquals(newAccount, account);
 
     }
 
