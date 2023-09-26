@@ -99,7 +99,7 @@ public class AccountServiceImpl implements AccountService{
            newBookingInformation = newBookingInformation.substring(0, newBookingInformation.length() - 1);
         }
 
-        if(newBookingInformation.equals(bookings))
+        if(!newBookingInformation.equals(bookings))
         {
             foundAccount.setActiveBookings(newBookingInformation);
             updateAccount(foundAccount);
