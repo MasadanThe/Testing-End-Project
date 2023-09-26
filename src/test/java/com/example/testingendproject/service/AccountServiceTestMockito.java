@@ -63,9 +63,6 @@ class AccountServiceTestMockito {
 
     @Test
     void verifyThatYouCantAddABookingWithoutUsername(){
-        when(paymentExternal.checkPayment(any())).thenReturn("6457");
-        accountService.addBooking("8",null);
-
-        assertEquals(true, accountService.addBooking("8",null));
+        assertEquals(false, accountService.addBooking("8",""));
     }
 }
