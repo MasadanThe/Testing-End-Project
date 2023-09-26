@@ -42,9 +42,20 @@ class ApiControllerTest {
     }
     @Test
     void testEndToEndCreateAccount() throws Exception {
+        //Adds a new user and expects a user to be added
         mockMvc.perform(post("/create_account").
-                content(asJsonString(new Account("Test56", "86778876", "7688678", "2", "3", "User"))))
+                content(asJsonString(new Account("Test", "86778876", "7688678", "2", "3", "User")))
+                        .contentType("application/json"))
                 .andExpect(status().isOk());
+
+        assertEquals(3, accountService.getAccounts().size());
+
+        //Tries to add the same user and expects it to not have been added
+        mockMvc.perform(post("/create_account").
+                        content(asJsonString(new Account("Test", "86778876", "7688678", "2", "3", "User")))
+                        .contentType("application/json"))
+                .andExpect(status().isBadRequest());
+        assertEquals(3, accountService.getAccounts().size());
     }
 
     @Test

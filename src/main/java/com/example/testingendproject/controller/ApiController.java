@@ -6,10 +6,7 @@ import com.example.testingendproject.service.AuthService;
 import com.example.testingendproject.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class ApiController {
     AccountService accountService;
 
     @PostMapping("create_account")
-    public ResponseEntity<String> createAccount(Account account){
+    public ResponseEntity<String> createAccount(@RequestBody Account account){
         if(accountService.createAccount(account))
         {
             return ResponseEntity.ok("ok");
