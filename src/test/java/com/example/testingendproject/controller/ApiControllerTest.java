@@ -132,7 +132,7 @@ class ApiControllerTest {
     void addBooking() {
     }
 
-    @Test
+
     void deleteBooking() {
     }
 
