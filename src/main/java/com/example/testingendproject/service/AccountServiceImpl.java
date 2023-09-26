@@ -73,6 +73,11 @@ public class AccountServiceImpl implements AccountService{
 
     public boolean deleteBooking(String id, String username){
         Account foundAccount = findByUsername(username);
+        //Checks if the user exist
+        if(foundAccount == null || foundAccount.getUsername().isEmpty())
+        {
+            return false;
+        }
         //Splits the bookings on ','
         String[] bookings = foundAccount.getActiveBookings().split(",");
         String newBookingInformation = "";
