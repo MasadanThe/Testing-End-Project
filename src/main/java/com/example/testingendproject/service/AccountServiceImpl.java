@@ -73,32 +73,40 @@ public class AccountServiceImpl implements AccountService{
 
     public boolean deleteBooking(String id, String username){
         Account foundAccount = findByUsername(username);
+
         //Checks if the user exist
         if(foundAccount == null || foundAccount.getUsername().isEmpty())
         {
             return false;
         }
+
         //Splits the bookings on ','
         String bookings = foundAccount.getActiveBookings();
         String[] bookingsSplited = bookings.split(",");
         String newBookingInformation = "";
 
+        //If account has no bookings
         if(bookings.isEmpty())
         {
             return false;
         }
+
+
         //Loops through bookings and saves all id's of the bookings that should not be removed
         for(int i = 0; i < bookingsSplited.length; i++){
             if(!bookingsSplited[i].equals(id)){
                 newBookingInformation += bookingsSplited[i] + ",";
             }
         }
+
         //If there is more bookings, remove the last ','
         if(!newBookingInformation.isEmpty())
         {
            newBookingInformation = newBookingInformation.substring(0, newBookingInformation.length() - 1);
         }
 
+
+        //If the bookings have changed, meaning we managed to delete one
         if(!newBookingInformation.equals(bookings))
         {
             foundAccount.setActiveBookings(newBookingInformation);
