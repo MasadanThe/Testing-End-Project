@@ -66,6 +66,11 @@ public class AccountServiceImpl implements AccountService{
             return false;
         }
 
+        //If no paymentInformation exist
+        if(foundAccount.getPaymentInformation().isEmpty()){
+            return false;
+        }
+
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','
