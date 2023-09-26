@@ -181,7 +181,7 @@ class AccountServiceTest {
     @Test
     void verifyWeCantDeleteABookingFromAnAccountThatHasNoBookings() {
 
-        assertEquals(true, accountService.deleteBooking("54", "Mr.Gostra"));
+        assertEquals(false, accountService.deleteBooking("54", "Mr.Gostra"));
 
     }
 
