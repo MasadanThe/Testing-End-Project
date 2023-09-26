@@ -173,8 +173,31 @@ class ApiControllerTest {
         assertEquals(false, content.isEmpty());
     }
 
-    @Test
-    void endToEndCreateBookingSupplier() {
+    void endToEndCreateBookingSupplier() throws Exception {
+        var route1 = Route.builder()
+                .destinationEnd("Skogaholm")
+                .destinationStart("Köpenhamn")
+                .price(700)
+                .salePrice(650)
+                .estimatedArrival("13:00")
+                .estimatedDeparture("09:00")
+                .contractor("MKD")
+                .transportType("Train").build();
+
+        mockMvc.perform(post("/create_booking_supplier").
+                        content(asJsonString(route1))
+                        .contentType("application/json"))
+                .andExpect(status().isOk());
+
+        List<Route> routeList = routeService.getRoutes();
+        Route foundRoute = new Route();
+        for (Route route: routeList) {
+            if (route.getContractor().equals(route1.getContractor()) && route.getDestinationEnd().equals(route1.getDestinationEnd())){
+                foundRoute = route;
+            }
+        }
+
+        assert(foundRoute.getDestinationEnd().equals("Skogaholm"));
     }
 
     //One method that runs the tests in a special order so they don't get wrong data.
@@ -190,6 +213,7 @@ class ApiControllerTest {
 
             endToEndUpdateSale();
             endToEndGetRoutes();
+            endToEndCreateBookingSupplier();
         }
         catch (Exception exception)
         {
