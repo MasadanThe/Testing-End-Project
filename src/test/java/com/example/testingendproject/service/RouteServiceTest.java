@@ -72,4 +72,10 @@ class RouteServiceTest {
         routeService.createBookingSupplier(route1);
         assertEquals(routeService.getRoutes().size(), 2);
     }
+
+    @Test
+    void verifyWeCantAddNullToTheDatabase() {
+
+        assertEquals(true, routeService.createBookingSupplier(null));
+    }
 }
