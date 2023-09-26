@@ -46,6 +46,15 @@ class ApiControllerTest {
         assertEquals(true, firstAccount);
         assertEquals(true, secondAccount);
 
+        var account1 = Account.builder()
+                .username("MKD")
+                .accountType("CONTRACTOR")
+                .contactInformation("8973045653")
+                .paymentInformation("435252432")
+                .paymentHistory("342432,7675,322")
+                .activeBookings("1,5,4,3").build();
+        accountService.createAccount(account1);
+
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
