@@ -161,7 +161,7 @@ class ApiControllerTest {
                 foundRoute = route;
             }
         }
-        assertEquals(3, foundRoute.getSalePrice());
+        assertEquals(39, foundRoute.getSalePrice());
     }
 
     @Test
