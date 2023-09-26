@@ -36,8 +36,12 @@ public class ApiController {
     }
 
     @PostMapping("update_account")
-    public ResponseEntity<String> updateAccount(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<String> updateAccount(@RequestBody Account account){
+        if(accountService.updateAccount(account))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("delete_account")
