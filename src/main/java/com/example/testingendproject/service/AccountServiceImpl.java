@@ -30,8 +30,13 @@ public class AccountServiceImpl implements AccountService{
 
     }
 
-    public void updateAccount(Account account){
+    public boolean updateAccount(Account account){
         Account foundAccount = findByUsername(account.getUsername());
+
+        if(foundAccount == null || foundAccount.getUsername().isEmpty())
+        {
+            return false;
+        }
         //Updates the information
         foundAccount.setUsername(account.getUsername());
         foundAccount.setActiveBookings(account.getActiveBookings());
@@ -39,6 +44,7 @@ public class AccountServiceImpl implements AccountService{
         foundAccount.setPaymentHistory(account.getPaymentHistory());
         foundAccount.setPaymentInformation(account.getPaymentInformation());
         accountRepository.save(foundAccount);
+        return true;
     }
 
     public void deleteAccount(String username){
