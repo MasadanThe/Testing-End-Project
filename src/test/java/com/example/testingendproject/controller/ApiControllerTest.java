@@ -23,6 +23,10 @@ class ApiControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    @BeforeAll
+    static void addAlarms(@Autowired AccountService accountService) {
+        accountService.createAccount(new Account("Test", "435534534", "432243342", "2", "3", "User"));
+    }
     @Test
     void testEndToEndCreateAccount() throws Exception {
         mockMvc.perform(post("/create_account").
