@@ -1,7 +1,7 @@
 package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
-import com.example.testingendproject.model.FastDeleteBooking;
+import com.example.testingendproject.model.FastBooking;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -118,10 +118,10 @@ class ApiControllerTest {
 
 
     void deleteBooking() throws Exception {
-        FastDeleteBooking fastDeleteBooking = new FastDeleteBooking("3", "Test24");
+        FastBooking fastBooking = new FastBooking("3", "Test24");
         //Adds a new user and expects a user to be added
         mockMvc.perform(post("/delete_booking").
-                        content(asJsonString(fastDeleteBooking))
+                        content(asJsonString(fastBooking))
                         .contentType("application/json"))
                 .andExpect(status().isOk());
 

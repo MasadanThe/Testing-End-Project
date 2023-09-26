@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class FastDeleteBooking {
+public class FastBooking {
     String id;
     String username;
 }
