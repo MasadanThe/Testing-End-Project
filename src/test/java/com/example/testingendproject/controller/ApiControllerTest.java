@@ -26,7 +26,8 @@ class ApiControllerTest {
     @Test
     void testEndToEndCreateAccount() throws Exception {
         mockMvc.perform(post("/create_account").
-                content(asJsonString(new Account("Test", "435534534", "432243342", "2", "3", "User"))));
+                content(asJsonString(new Account("Test", "435534534", "432243342", "2", "3", "User"))))
+                .andExpect(status().isBadRequest());
     }
 
 
@@ -40,6 +41,7 @@ class ApiControllerTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
 
 
     @Test
