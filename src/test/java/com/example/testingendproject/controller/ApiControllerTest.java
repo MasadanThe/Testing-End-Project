@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.List;
 
@@ -164,6 +165,17 @@ class ApiControllerTest {
     }
 
     @Test
+    void endToEndGetRoutes() throws Exception {
+
+        //Adds a new user and expects a user to be added
+        MvcResult result = mockMvc.perform(get("/get_routes"))
+                .andExpect(status().isOk()).andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        assertEquals(true, content.isEmpty());
+    }
+
+    @Test
     void getRoutes() {
     }
 
@@ -183,6 +195,7 @@ class ApiControllerTest {
             deleteBooking();
 
             endToEndUpdateSale();
+            endToEndGetRoutes();
         }
         catch (Exception exception)
         {
