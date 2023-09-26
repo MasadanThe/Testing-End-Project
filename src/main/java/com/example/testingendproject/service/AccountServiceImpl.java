@@ -83,6 +83,10 @@ public class AccountServiceImpl implements AccountService{
         String[] bookingsSplited = bookings.split(",");
         String newBookingInformation = "";
 
+        if(bookings.isEmpty())
+        {
+            return false;
+        }
         //Loops through bookings and saves all id's of the bookings that should not be removed
         for(int i = 0; i < bookingsSplited.length; i++){
             if(!bookingsSplited[i].equals(id)){
