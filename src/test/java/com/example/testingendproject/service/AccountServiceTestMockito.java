@@ -41,13 +41,13 @@ class AccountServiceTestMockito {
                 .paymentHistory("")
                 .activeBookings("").build();
 
-        when(paymentExternal.checkPayment()).thenReturn("6457");
+        when(paymentExternal.checkPayment(any())).thenReturn("6457");
         when(accountRepository.findByUsername("Mr.Cool")).thenReturn(account1);
 
 
         accountService.addBooking("1", account1.getUsername());
 
-        verify(paymentExternal, times(1)).checkPayment();
+        verify(paymentExternal, times(1)).checkPayment(any());
         verify(accountRepository, times(1)).findByUsername(any());
     }
 }
