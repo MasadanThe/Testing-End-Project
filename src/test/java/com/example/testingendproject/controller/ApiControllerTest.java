@@ -91,11 +91,17 @@ class ApiControllerTest {
         mockMvc.perform(post("/update_account").
                         content(asJsonString(newAccount))
                         .contentType("application/json"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
 
         Account account = accountService.findByUsername("Test24");
         account.setAccountType("ADMIN");
-        assertEquals(newAccount, account);
+        assertEquals(newAccount.getUsername(), account.getUsername());
+        assertEquals(newAccount.getId(), account.getId());
+        assertEquals(newAccount.getContactInformation(), account.getContactInformation());
+        assertEquals(newAccount.getPaymentInformation(), account.getPaymentInformation());
+        assertEquals(newAccount.getPaymentHistory(), account.getPaymentHistory());
+        assertEquals(newAccount.getActiveBookings(), account.getActiveBookings());
+        assertEquals(newAccount.getAccountType(), account.getAccountType());
 
     }
 
