@@ -2,6 +2,7 @@ package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.FastBooking;
+import com.example.testingendproject.model.UpdateSale;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AuthService;
 import com.example.testingendproject.service.RouteService;
@@ -76,8 +77,8 @@ public class ApiController {
     }
 
     @PostMapping("update_sale")
-    public ResponseEntity<String> updateSale(@RequestBody Long id, Long salePrice, String username){
-        if(routeService.updateSale(id, salePrice, username))
+    public ResponseEntity<String> updateSale(@RequestBody UpdateSale updateSale){
+        if(routeService.updateSale(updateSale.getId(), updateSale.getSalePrice(), updateSale.getUsername()))
         {
             return ResponseEntity.ok("ok");
         }
