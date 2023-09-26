@@ -1,5 +1,5 @@
 # Testing-End-Project
-
+READ THE FILE RAW
 The way of authetication is just know you username and sometimes id.
 Not secure but it works.
 There are classes for authenticate that is not used but could easily be activated.
