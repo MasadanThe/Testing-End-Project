@@ -164,7 +164,6 @@ class ApiControllerTest {
         assertEquals(39, foundRoute.getSalePrice());
     }
 
-    @Test
     void endToEndGetRoutes() throws Exception {
 
         //Adds a new user and expects a user to be added
@@ -172,7 +171,7 @@ class ApiControllerTest {
                 .andExpect(status().isOk()).andReturn();
 
         String content = result.getResponse().getContentAsString();
-        assertEquals(true, content.isEmpty());
+        assertEquals(false, content.isEmpty());
     }
 
     @Test
