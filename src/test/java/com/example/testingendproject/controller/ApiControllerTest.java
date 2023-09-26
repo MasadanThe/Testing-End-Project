@@ -119,6 +119,9 @@ class ApiControllerTest {
     void createBookingSupplier() {
     }
 
+    //One method that runs the tests in a special order so they don't get wrong data.
+    //Like testEndToEndCreateAccount creates an account but testEndToEndDeleteAccount just deleted it
+    //And the asserts gets wrong
     @Test
     void runAll(){
         try {
