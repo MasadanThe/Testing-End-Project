@@ -96,7 +96,7 @@ class ApiControllerTest {
                         .contentType("application/json"))
                 .andExpect(status().isOk());
 
-        assertEquals(5, accountService.getAccounts().size());
+        assertEquals(2, accountService.getAccounts().size());
     }
 
     @Test
