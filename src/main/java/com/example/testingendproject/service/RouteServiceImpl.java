@@ -31,8 +31,12 @@ public class RouteServiceImpl implements RouteService{
             }
 
         }
+        //If it didn't find a route
+        if(foundRoute.getContractor().isEmpty()){
+            return false;
+        }
         createBookingSupplier(foundRoute);
-        return false;
+        return true;
     }
 
     @Override
