@@ -44,7 +44,11 @@ class RouteServiceTest {
         List<Route> routeList1 = routeService.getRoutes();
 
         assertEquals(200, routeList1.get(0).getSalePrice());
+    }
 
+    @Test
+    void verifyThatUpdatePriceReturnsFalseWhenItDidntFindARoute() {
+        assertEquals(true, routeService.updateSale(Long.valueOf(4), Long.valueOf(200), "TGB"));
     }
 
     @Test
