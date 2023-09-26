@@ -48,7 +48,7 @@ class RouteServiceTest {
 
     @Test
     void verifyThatUpdatePriceReturnsFalseWhenItDidntFindARoute() {
-        assertEquals(true, routeService.updateSale(Long.valueOf(4), Long.valueOf(200), "TGB"));
+        assertEquals(false, routeService.updateSale(Long.valueOf(4), Long.valueOf(200), "TGB"));
     }
 
     @Test
