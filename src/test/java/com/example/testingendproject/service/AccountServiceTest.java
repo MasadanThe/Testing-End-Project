@@ -40,7 +40,7 @@ class AccountServiceTest {
                 .contactInformation("8973045653")
                 .paymentInformation("435252432")
                 .paymentHistory("342432,7675,322")
-                .activeBookings("1,5,4,3").build();
+                .activeBookings("").build();
         accountService.createAccount(account2);
     }
 
@@ -175,6 +175,13 @@ class AccountServiceTest {
     void verifyWeCantDeleteABookingThatDoesNotExist() {
 
         assertEquals(false, accountService.deleteBooking("54", "Mr.Cool"));
+
+    }
+
+    @Test
+    void verifyWeCantDeleteABookingFromAnAccountThatHasNoBookings() {
+
+        assertEquals(true, accountService.deleteBooking("54", "Mr.Gostra"));
 
     }
 
