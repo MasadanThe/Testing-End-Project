@@ -94,7 +94,6 @@ class ApiControllerTest {
                 .andExpect(status().isOk());
 
         Account account = accountService.findByUsername("Test24");
-        account.setAccountType("ADMIN");
         assertEquals(newAccount.getUsername(), account.getUsername());
         assertEquals(newAccount.getContactInformation(), account.getContactInformation());
         assertEquals(newAccount.getPaymentInformation(), account.getPaymentInformation());
