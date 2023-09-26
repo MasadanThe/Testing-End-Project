@@ -18,8 +18,7 @@ public class AccountServiceImpl implements AccountService{
     public boolean createAccount(Account account){
         Account foundAccount = accountRepository.findByUsername(account.getUsername());
 
-            //Sometimes the found username is not null but not the same either
-            //If it is not the same the account doesn't exist
+            //Sometimes the found username is not null but is empty
             if(foundAccount == null || foundAccount.getUsername().isEmpty())
             {
                 accountRepository.save(account);
@@ -33,6 +32,7 @@ public class AccountServiceImpl implements AccountService{
     public boolean updateAccount(Account account){
         Account foundAccount = findByUsername(account.getUsername());
 
+        //Checks if the user exist and if the update have a username
         if(foundAccount == null || foundAccount.getUsername().isEmpty() || account.getUsername().equals(""))
         {
             return false;
@@ -49,6 +49,7 @@ public class AccountServiceImpl implements AccountService{
 
     public boolean deleteAccount(String username){
         Account foundAccount = findByUsername(username);
+        //Checks if the user exist
         if(foundAccount == null || foundAccount.getUsername().isEmpty())
         {
             return false;
