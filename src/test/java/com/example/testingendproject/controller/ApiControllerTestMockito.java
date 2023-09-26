@@ -65,7 +65,7 @@ class ApiControllerTestMockito {
                 .andExpect(status().isOk());
 
         Account account = accountService.findByUsername("Test24");
-        assertEquals("35252", account.getActiveBookings());
+        assertEquals("5,3,5", account.getActiveBookings());
     }
 
     /*
