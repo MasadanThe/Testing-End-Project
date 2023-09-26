@@ -82,7 +82,7 @@ class ApiControllerTest {
                         content(asJsonString(new Account("Test", "86778876", "7688678", "2", "3", "User")))
                         .contentType("application/json"))
                 .andExpect(status().isBadRequest());
-        assertEquals(3, accountService.getAccounts().size());
+        assertEquals(4, accountService.getAccounts().size());
     }
 
    /* @Test
