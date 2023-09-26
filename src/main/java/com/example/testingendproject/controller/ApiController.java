@@ -89,7 +89,12 @@ public class ApiController {
     }
 
     @PostMapping("create_booking_supplier")
-    public ResponseEntity<String> createBookingSupplier(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<String> createBookingSupplier(@RequestBody Route route){
+        if(routeService.createBookingSupplier(route))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        return ResponseEntity.badRequest().build();
+
     }
 }
