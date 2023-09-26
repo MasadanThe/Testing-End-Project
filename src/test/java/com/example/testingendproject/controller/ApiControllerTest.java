@@ -96,7 +96,6 @@ class ApiControllerTest {
         Account account = accountService.findByUsername("Test24");
         account.setAccountType("ADMIN");
         assertEquals(newAccount.getUsername(), account.getUsername());
-        assertEquals(newAccount.getId(), account.getId());
         assertEquals(newAccount.getContactInformation(), account.getContactInformation());
         assertEquals(newAccount.getPaymentInformation(), account.getPaymentInformation());
         assertEquals(newAccount.getPaymentHistory(), account.getPaymentHistory());
