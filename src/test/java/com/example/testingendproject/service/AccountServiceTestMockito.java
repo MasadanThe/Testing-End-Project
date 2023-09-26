@@ -58,6 +58,6 @@ class AccountServiceTestMockito {
         when(paymentExternal.checkPayment(any())).thenReturn("6457");
         accountService.addBooking("8","Mr.Cool");
 
-        assertEquals("1,5,4,3,2", accountService.findByUsername("Mr.Cool").getActiveBookings());
+        assertEquals("1,5,4,3,7,8", accountService.findByUsername("Mr.Cool").getActiveBookings());
     }
 }
