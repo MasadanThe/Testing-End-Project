@@ -1,6 +1,5 @@
 package com.example.testingendproject.model;
 
-import jakarta.persistence.Entity;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class FastDeleteAccount {
+public class FastDeleteBooking {
     String id;
     String username;
 }

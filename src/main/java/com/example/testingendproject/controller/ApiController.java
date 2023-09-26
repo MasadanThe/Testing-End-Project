@@ -1,10 +1,9 @@
 package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
-import com.example.testingendproject.model.FastDeleteAccount;
+import com.example.testingendproject.model.FastDeleteBooking;
 import com.example.testingendproject.service.AccountService;
 import com.example.testingendproject.service.AuthService;
-import com.example.testingendproject.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,8 +59,8 @@ public class ApiController {
     }
 
     @PostMapping("delete_booking")
-    public ResponseEntity<String> deleteBooking(@RequestBody FastDeleteAccount fastDeleteAccount){
-        if(accountService.deleteBooking(fastDeleteAccount.getId(), fastDeleteAccount.getUsername()))
+    public ResponseEntity<String> deleteBooking(@RequestBody FastDeleteBooking fastDeleteBooking){
+        if(accountService.deleteBooking(fastDeleteBooking.getId(), fastDeleteBooking.getUsername()))
         {
             return ResponseEntity.ok("ok");
         }

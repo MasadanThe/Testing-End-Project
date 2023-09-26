@@ -1,40 +1,24 @@
 package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
+import com.example.testingendproject.model.FastDeleteBooking;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.service.AccountService;
-import com.example.testingendproject.service.AccountServiceImpl;
-import com.example.testingendproject.service.PaymentExternal;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
-import java.awt.*;
-import java.util.List;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
@@ -133,7 +117,16 @@ class ApiControllerTest {
     }
 
 
-    void deleteBooking() {
+    void deleteBooking() throws Exception {
+        FastDeleteBooking fastDeleteBooking = new FastDeleteBooking("3", "Test24");
+        //Adds a new user and expects a user to be added
+        mockMvc.perform(post("/delete_booking").
+                        content(asJsonString(fastDeleteBooking))
+                        .contentType("application/json"))
+                .andExpect(status().isOk());
+
+        Account account = accountService.findByUsername("Test24");
+        assertEquals("34", account.getActiveBookings());
     }
 
     @Test
@@ -157,6 +150,7 @@ class ApiControllerTest {
             testEndToEndCreateAccount();
             testEndToEndDeleteAccount();
             testEndToEndUpdateAccount();
+            deleteBooking();
         }
         catch (Exception exception)
         {
