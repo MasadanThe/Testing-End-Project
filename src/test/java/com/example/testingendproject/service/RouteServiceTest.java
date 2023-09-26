@@ -1,5 +1,6 @@
 package com.example.testingendproject.service;
 
+import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.RouteRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,8 +24,20 @@ class RouteServiceTest {
     @Autowired
     RouteService routeService;
 
+    @Autowired
+    AccountService accountService;
+
     @BeforeAll
-    static void addEntries(@Autowired RouteService routeService) {
+    static void addEntries(@Autowired RouteService routeService, @Autowired AccountService accountService) {
+        var account1 = Account.builder()
+                .username("MKD")
+                .accountType("CONTRACTOR")
+                .contactInformation("8973045653")
+                .paymentInformation("435252432")
+                .paymentHistory("342432,7675,322")
+                .activeBookings("1,5,4,3").build();
+        accountService.createAccount(account1);
+
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
