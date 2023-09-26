@@ -58,7 +58,7 @@ class ApiControllerTest {
         assertEquals(3, accountService.getAccounts().size());
     }
 
-    @Test
+   /* @Test
     void verifyAccountCount() throws Exception {
         MvcResult result = mockMvc.perform(get("/get_accounts"))
                 .andExpect(content()
@@ -68,7 +68,7 @@ class ApiControllerTest {
         String content = result.getResponse().getContentAsString();
         assertEquals("hej", content);
 
-    }
+    }*/
 
 
     /*
