@@ -72,15 +72,19 @@ public class AccountServiceImpl implements AccountService{
         }
 
         String paymentCode = paymentExternal.checkPayment(foundAccount.getPaymentInformation());
+        //This will always be true since check(Payment) doesn't return any text
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','
             foundAccount.setPaymentHistory(foundAccount.getPaymentHistory() + paymentCode + ",");
             foundAccount.setActiveBookings(foundAccount.getActiveBookings() + id + "," );
 
-        }
-        updateAccount(foundAccount);
+            updateAccount(foundAccount);
 
-        return true;
+            return true;
+
+        }
+        return false;
+
     }
 
     public boolean deleteBooking(String id, String username){
