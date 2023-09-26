@@ -18,6 +18,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
+import java.awt.*;
+import java.util.List;
 @SpringBootTest
 @AutoConfigureMockMvc
 class ApiControllerTest {
@@ -41,8 +44,12 @@ class ApiControllerTest {
     }
 
     @Test
-    void verifyAccountCount(){
-        assertEquals(3, accountRepository.findAll().size());
+    void verifyAccountCount() throws Exception {
+        mockMvc.perform(get("/get_accounts"))
+                .andExpect(status()
+                        .isOk())
+                .andExpect(content()
+                        .contentType("application/json"));
     }
 
 

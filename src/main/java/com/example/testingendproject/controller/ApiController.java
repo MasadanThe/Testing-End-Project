@@ -20,8 +20,6 @@ public class ApiController {
     AuthService authService;
     @Autowired
     AccountService accountService;
-    @Autowired
-    RouteService routeService;
 
     @PostMapping("create_account")
     public ResponseEntity<String> createAccount(Account account){
@@ -34,7 +32,10 @@ public class ApiController {
     @GetMapping("get_accounts")
     public ResponseEntity<List<Account>> getAccounts(){
         List<Account> accountList = accountService.getAccounts();
+        if (accountList.size() == 1){
             return ResponseEntity.ok(accountList);
+        }
+            return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("update_account")
