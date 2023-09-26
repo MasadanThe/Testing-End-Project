@@ -98,9 +98,14 @@ public class AccountServiceImpl implements AccountService{
         {
            newBookingInformation = newBookingInformation.substring(0, newBookingInformation.length() - 1);
         }
-        foundAccount.setActiveBookings(newBookingInformation);
-        updateAccount(foundAccount);
-        return true;
+
+        if(newBookingInformation.equals(bookings))
+        {
+            foundAccount.setActiveBookings(newBookingInformation);
+            updateAccount(foundAccount);
+            return true;
+        }
+        return false;
     }
 
     public Account findByUsername(String username){
