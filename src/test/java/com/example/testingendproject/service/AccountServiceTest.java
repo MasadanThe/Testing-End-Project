@@ -185,6 +185,13 @@ class AccountServiceTest {
 
     }
 
+    @Test
+    void verifyWeCantAddABookingForAUserThatDoesNotExist() {
+
+        assertEquals(true, accountService.addBooking("55", "Mr.NotExist"));
+
+    }
+
 
 
 }
