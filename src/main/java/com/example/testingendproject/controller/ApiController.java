@@ -41,8 +41,12 @@ public class ApiController {
     }
 
     @PostMapping("delete_account")
-    public ResponseEntity<String> deleteAccount(){
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<String> deleteAccount(@RequestBody Account account){
+        if(accountService.deleteAccount(account.getUsername()))
+        {
+            return ResponseEntity.ok("ok");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("add_booking")
