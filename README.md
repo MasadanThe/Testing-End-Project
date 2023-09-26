@@ -31,3 +31,8 @@ Jenkins:
       java -jar Testing-End-Project-0.0.1-SNAPSHOT.jar
 
   Optionally you can have a third pipeline that merge if the second is stable.
+
+JMeter:
+  Use JMeter for a stress test of 1000 users all at the same time.
+  For me it could /get_routes with 2 routes in database in 800ms
+  
