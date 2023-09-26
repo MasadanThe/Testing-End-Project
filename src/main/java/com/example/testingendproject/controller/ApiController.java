@@ -32,7 +32,7 @@ public class ApiController {
     @GetMapping("get_accounts")
     public ResponseEntity<List<Account>> getAccounts(){
         List<Account> accountList = accountService.getAccounts();
-        if (accountList.size() == 1){
+        if (accountList.size() > 0){
             return ResponseEntity.ok(accountList);
         }
             return ResponseEntity.badRequest().build();

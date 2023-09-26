@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -34,22 +35,28 @@ class ApiControllerTest {
 
     @BeforeAll
     static void addAccount(@Autowired AccountService accountService) {
-        accountService.createAccount(new Account("Test", "435534534", "432243342", "2", "3", "User"));
+        boolean firstAccount = accountService.createAccount(new Account("Test56", "435534534", "432243342", "2", "3", "User"));
+        boolean secondAccount = accountService.createAccount(new Account("Test24", "435534534", "432243342", "2", "3", "User"));
+        assertEquals(true, firstAccount);
+        assertEquals(true, secondAccount);
     }
     @Test
     void testEndToEndCreateAccount() throws Exception {
         mockMvc.perform(post("/create_account").
-                content(asJsonString(new Account("Test", "435534534", "432243342", "2", "3", "User"))))
+                content(asJsonString(new Account("Test56", "86778876", "7688678", "2", "3", "User"))))
                 .andExpect(status().isOk());
     }
 
     @Test
     void verifyAccountCount() throws Exception {
-        mockMvc.perform(get("/get_accounts"))
-                .andExpect(status()
-                        .isOk())
+        MvcResult result = mockMvc.perform(get("/get_accounts"))
                 .andExpect(content()
-                        .contentType("application/json"));
+                .contentType("application/json"))
+                .andExpect(status()
+                        .isOk()).andReturn();
+        String content = result.getResponse().getContentAsString();
+        assertEquals("hej", content);
+
     }
 
 

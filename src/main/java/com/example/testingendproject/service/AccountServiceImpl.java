@@ -16,26 +16,17 @@ public class AccountServiceImpl implements AccountService{
     @Autowired(required = false)
     PaymentExternal paymentExternal;
     public boolean createAccount(Account account){
-        Account foundAccount = findByUsername(account.getUsername());
-        try
-        {
-            //If the username is null it will create an error, therefor the account does not exist
-            foundAccount.getUsername();
+        Account foundAccount = accountRepository.findByUsername(account.getUsername());
+
             //Sometimes the found username is not null but not the same either
             //If it is not the same the account doesn't exist
-            if(!foundAccount.getUsername().equals(account.getUsername()))
+            if(foundAccount == null || foundAccount.getUsername().isEmpty())
             {
                 accountRepository.save(account);
                 return true;
             }
-            return false;
+        return false;
 
-        }
-        catch (Exception exception)
-        {
-            accountRepository.save(account);
-            return true;
-        }
 
     }
 
