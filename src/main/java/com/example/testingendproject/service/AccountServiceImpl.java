@@ -33,7 +33,7 @@ public class AccountServiceImpl implements AccountService{
     public boolean updateAccount(Account account){
         Account foundAccount = findByUsername(account.getUsername());
 
-        if(foundAccount == null || foundAccount.getUsername().isEmpty())
+        if(foundAccount == null || foundAccount.getUsername().isEmpty() || account.getUsername().equals(""))
         {
             return false;
         }
