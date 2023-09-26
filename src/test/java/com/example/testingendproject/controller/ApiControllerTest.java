@@ -2,8 +2,10 @@ package com.example.testingendproject.controller;
 
 import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.FastBooking;
+import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.service.AccountService;
+import com.example.testingendproject.service.RouteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,14 +33,28 @@ class ApiControllerTest {
     @Autowired
     AccountService accountService;
     @Autowired
+    RouteService routeService;
+    @Autowired
     AccountRepository accountRepository;
 
     @BeforeAll
-    static void addEntities(@Autowired AccountService accountService) {
+    static void addEntities(@Autowired AccountService accountService, @Autowired RouteService routeService) {
         boolean firstAccount = accountService.createAccount(new Account("Test56", "435534534", "432243342", "2", "3", "User"));
         boolean secondAccount = accountService.createAccount(new Account("Test24", "435534534", "432243342", "2", "5,3", "User"));
         assertEquals(true, firstAccount);
         assertEquals(true, secondAccount);
+
+        var route1 = Route.builder()
+                .destinationEnd("Örebro")
+                .destinationStart("Köpenhamn")
+                .price(700)
+                .salePrice(650)
+                .estimatedArrival("13:00")
+                .estimatedDeparture("09:00")
+                .contractor("MKD")
+                .transportType("Train").build();
+        routeService.createBookingSupplier(route1);
+
     }
 
     void testEndToEndCreateAccount() throws Exception {
@@ -126,7 +144,24 @@ class ApiControllerTest {
     }
 
     @Test
-    void updateSale() {
+    void updateSale() throws Exception {
+
+        //Adds a new user and expects a user to be added
+        mockMvc.perform(post("/update_sale").
+                        content(asJsonString(obj))
+                        .contentType("application/json"))
+                .andExpect(status().isOk());
+
+        List<Route> routeList = getRoutes();
+        Route foundRoute = new Route();
+        for (Route route: routeList) {
+            if (route.getId() == obj.getid() && route.getContractor().equals(username)){
+                route.setSalePrice(salePrice);
+                foundRoute = route;
+            }
+
+        }
+        assertEquals(3, routeService.));
     }
 
     @Test
