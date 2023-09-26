@@ -139,6 +139,19 @@ class AccountServiceTest {
         assertEquals(false, accountService.deleteAccount(account1.getUsername()));
 
     }
+    @Test
+    void verifyThatWeCantDeleteAccountThatHasNoName() {
+        var account1 = Account.builder()
+                .username("")
+                .accountType("ADMIN")
+                .contactInformation("8973045653")
+                .paymentInformation("435252432")
+                .paymentHistory("")
+                .activeBookings("").build();
+
+        assertEquals(true, accountService.deleteAccount(account1.getUsername()));
+
+    }
 
     @Test
     void verifyThatBookingIsDeletedFromAccount() {
