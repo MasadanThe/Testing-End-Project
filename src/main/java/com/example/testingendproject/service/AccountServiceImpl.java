@@ -76,7 +76,16 @@ public class AccountServiceImpl implements AccountService{
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','
             foundAccount.setPaymentHistory(foundAccount.getPaymentHistory() + paymentCode + ",");
-            foundAccount.setActiveBookings(foundAccount.getActiveBookings()  + "," + id);
+            //If you don't have any bookings
+            if(foundAccount.getActiveBookings().isEmpty())
+            {
+                foundAccount.setActiveBookings(id);
+            }
+            else
+            {
+                foundAccount.setActiveBookings(foundAccount.getActiveBookings()  + "," + id);
+            }
+
 
             updateAccount(foundAccount);
 
