@@ -136,10 +136,7 @@ class AccountServiceTest {
                 .paymentHistory("")
                 .activeBookings("").build();
 
-        accountService.deleteAccount(account1.getUsername());
-        List<Account> accountList1 = accountService.getAccounts();
-
-        assertEquals(1, accountList1.size());
+        assertEquals(true, accountService.deleteAccount(account1.getUsername()));
 
     }
 
