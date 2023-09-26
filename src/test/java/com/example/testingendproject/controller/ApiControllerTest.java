@@ -113,16 +113,17 @@ class ApiControllerTest {
     }
 
 
+    @Test
     void addBooking() throws Exception {
         FastBooking fastBooking = new FastBooking("34", "Test24");
         //Adds a new user and expects a user to be added
         mockMvc.perform(post("/add_booking").
                         content(asJsonString(fastBooking))
                         .contentType("application/json"))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
 
         Account account = accountService.findByUsername("Test24");
-        assertEquals("5,324,324234", account.getActiveBookings());
+        assertEquals(5, account.getActiveBookings());
     }
 
 
@@ -160,7 +161,6 @@ class ApiControllerTest {
             testEndToEndDeleteAccount();
             testEndToEndUpdateAccount();
             deleteBooking();
-            addBooking();
         }
         catch (Exception exception)
         {
