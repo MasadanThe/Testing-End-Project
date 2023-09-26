@@ -5,6 +5,7 @@ import com.example.testingendproject.model.FastBooking;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.repository.RouteRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,5 +52,17 @@ class ApiControllerTestMockito {
 
         Account account = accountService.findByUsername("Test24");
         assertEquals(5, account.getActiveBookings());
+    }
+
+    /*
+    OBS DENNA METOD NAMNGED 'asJsonString' ÄR DIREKT KOPIERAD FRÅN
+    https://howtodoinjava.com/spring-boot2/testing/spring-boot-mockmvc-example/
+    */
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
