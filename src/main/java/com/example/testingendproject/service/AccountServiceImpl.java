@@ -79,13 +79,14 @@ public class AccountServiceImpl implements AccountService{
             return false;
         }
         //Splits the bookings on ','
-        String[] bookings = foundAccount.getActiveBookings().split(",");
+        String bookings = foundAccount.getActiveBookings();
+        String[] bookingsSplited = bookings.split(",");
         String newBookingInformation = "";
 
         //Loops through bookings and saves all id's of the bookings that should not be removed
-        for(int i = 0; i < bookings.length; i++){
-            if(!bookings[i].equals(id)){
-                newBookingInformation += bookings[i] + ",";
+        for(int i = 0; i < bookingsSplited.length; i++){
+            if(!bookingsSplited[i].equals(id)){
+                newBookingInformation += bookingsSplited[i] + ",";
             }
         }
         //If there is more bookings, remove the last ','
