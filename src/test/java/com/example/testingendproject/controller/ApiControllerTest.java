@@ -32,7 +32,7 @@ class ApiControllerTest {
     AccountRepository accountRepository;
 
     @BeforeAll
-    static void addAccount(@Autowired AccountService accountService) {
+    static void addEntities(@Autowired AccountService accountService) {
         boolean firstAccount = accountService.createAccount(new Account("Test56", "435534534", "432243342", "2", "3", "User"));
         boolean secondAccount = accountService.createAccount(new Account("Test24", "435534534", "432243342", "2", "5,3", "User"));
         assertEquals(true, firstAccount);
