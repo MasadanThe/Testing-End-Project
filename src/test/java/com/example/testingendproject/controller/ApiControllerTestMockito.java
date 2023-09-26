@@ -55,7 +55,7 @@ class ApiControllerTestMockito {
 
 
     @Test
-    void addBooking() throws Exception {
+    void testEndToEndAddBooking() throws Exception {
         when(paymentExternal.checkPayment(any())).thenReturn("6457");
         FastBooking fastBooking = new FastBooking("5", "Test24");
         //Adds a new user and expects a user to be added
