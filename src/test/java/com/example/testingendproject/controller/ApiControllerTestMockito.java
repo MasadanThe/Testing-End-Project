@@ -62,7 +62,7 @@ class ApiControllerTestMockito {
         mockMvc.perform(post("/add_booking").
                         content(asJsonString(fastBooking))
                         .contentType("application/json"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
 
         Account account = accountService.findByUsername("Test24");
         assertEquals("35252", account.getActiveBookings());
