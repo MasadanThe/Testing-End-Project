@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ApiController {
 
@@ -28,6 +30,11 @@ public class ApiController {
             return ResponseEntity.ok("ok");
         }
         return ResponseEntity.badRequest().build();
+    }
+    @GetMapping("get_accounts")
+    public ResponseEntity<List<Account>> getAccounts(){
+        List<Account> accountList = accountService.getAccounts();
+            return ResponseEntity.ok(accountList);
     }
 
     @PostMapping("update_account")
