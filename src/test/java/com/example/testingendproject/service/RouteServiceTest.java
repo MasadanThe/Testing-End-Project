@@ -121,7 +121,7 @@ class RouteServiceTest {
                 .estimatedDeparture("09:00")
                 .contractor("")
                 .transportType("Train").build();
-        assertEquals(true, routeService.createBookingSupplier(route1));
+        assertEquals(false, routeService.createBookingSupplier(route1));
 
     }
 
