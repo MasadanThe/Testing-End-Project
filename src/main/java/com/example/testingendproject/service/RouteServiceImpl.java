@@ -66,10 +66,6 @@ public class RouteServiceImpl implements RouteService{
 
         Account foundAccount = accountService.findByUsername(route.getContractor());
         //If it is not your route and you are not a contractor
-        if (route == null)
-        {
-            return false;
-        }
         if (foundAccount == null){
             return false;
         }
