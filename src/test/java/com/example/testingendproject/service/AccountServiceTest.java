@@ -164,4 +164,13 @@ class AccountServiceTest {
 
     }
 
+    @Test
+    void verifyWeCantDeleteABookingFromAUserThatDoesNotExist() {
+
+        assertEquals(true, accountService.deleteBooking("1", "Mr.NotExist"));
+
+    }
+
+
+
 }
