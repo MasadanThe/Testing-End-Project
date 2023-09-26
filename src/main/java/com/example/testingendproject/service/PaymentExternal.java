@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface PaymentExternal {
-    public String checkPayment();
+    public String checkPayment(String paymentInformation);
 }
