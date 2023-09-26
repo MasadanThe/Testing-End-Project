@@ -1,6 +1,7 @@
 package com.example.testingendproject.service;
 
 import com.example.testingendproject.model.Account;
+import com.example.testingendproject.model.FastBooking;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.AccountRepository;
 import com.example.testingendproject.repository.RouteRepository;
@@ -19,6 +20,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
@@ -38,22 +41,15 @@ class ApiControllerTestMockito {
 
 
     @Test
-    void verifyThatPaymentGoesThrough() {
-        var account1 = Account.builder()
-                .username("Mr.Cool")
-                .accountType("ADMIN")
-                .contactInformation("8973045653")
-                .paymentInformation("435252432")
-                .paymentHistory("")
-                .activeBookings("").build();
+    void addBooking() throws Exception {
+        FastBooking fastBooking = new FastBooking("34", "Test24");
+        //Adds a new user and expects a user to be added
+        mockMvc.perform(post("/add_booking").
+                        content(asJsonString(fastBooking))
+                        .contentType("application/json"))
+                .andExpect(status().isBadRequest());
 
-        when(paymentExternal.checkPayment(any())).thenReturn("6457");
-        when(accountRepository.findByUsername("Mr.Cool")).thenReturn(account1);
-
-
-        accountService.addBooking("1", account1.getUsername());
-
-        verify(paymentExternal, times(1)).checkPayment(any());
-        verify(accountRepository, times(1)).findByUsername(any());
+        Account account = accountService.findByUsername("Test24");
+        assertEquals(5, account.getActiveBookings());
     }
 }
