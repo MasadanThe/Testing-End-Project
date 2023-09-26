@@ -89,7 +89,14 @@ class ApiControllerTest {
     }
 
     @Test
-    void deleteAccount() {
+    void testEndToEndDeleteAccount() throws Exception {
+        //Deletes an account
+        mockMvc.perform(post("/delete_account").
+                        content(asJsonString(new Account("Test56", "86778876", "7688678", "2", "3", "User")))
+                        .contentType("application/json"))
+                .andExpect(status().isOk());
+
+        assertEquals(5, accountService.getAccounts().size());
     }
 
     @Test
