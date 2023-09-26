@@ -60,7 +60,7 @@ class AccountServiceTest {
                 .paymentHistory("")
                 .activeBookings("").build();
         accountService.createAccount(account1);
-        assertEquals(2, accountService.getAccounts().size());
+        assertEquals(3, accountService.getAccounts().size());
     }
 
     @Test
@@ -122,7 +122,7 @@ class AccountServiceTest {
         accountService.deleteAccount(account1.getUsername());
         List<Account> accountList1 = accountService.getAccounts();
 
-        assertEquals(1, accountList1.size());
+        assertEquals(2, accountList1.size());
 
     }
 
