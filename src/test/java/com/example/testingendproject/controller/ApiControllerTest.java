@@ -144,7 +144,6 @@ class ApiControllerTest {
         assertEquals("5", account.getActiveBookings());
     }
 
-    @Test
     void endToEndUpdateSale() throws Exception {
 
         UpdateSale updateSale = new UpdateSale(Long.valueOf(1), Long.valueOf(39),  "MKD");
@@ -182,6 +181,8 @@ class ApiControllerTest {
             testEndToEndDeleteAccount();
             testEndToEndUpdateAccount();
             deleteBooking();
+
+            endToEndUpdateSale();
         }
         catch (Exception exception)
         {
