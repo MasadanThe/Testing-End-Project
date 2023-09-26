@@ -1,5 +1,6 @@
 package com.example.testingendproject.service;
 
+import com.example.testingendproject.model.Account;
 import com.example.testingendproject.model.Route;
 import com.example.testingendproject.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,19 +64,25 @@ public class RouteServiceImpl implements RouteService{
     @Override
     public boolean createBookingSupplier(Route route){
 
+        Account foundAccount = accountService.findByUsername(route.getContractor());
         //If it is not your route and you are not a contractor
         if (route == null)
         {
             return false;
         }
-        if (accountService.findByUsername(route.getContractor()) == null){
+        if (foundAccount == null){
             return false;
         }
-        if (accountService.findByUsername(route.getContractor()).equals(""))
+        if (foundAccount.equals(""))
+        {
+            return false;
+        }
+        if (!foundAccount.getAccountType().equals("CONTRACTOR"))
         {
             return false;
         }
         routeRepository.save(route);
         return true;
+
     }
 }
