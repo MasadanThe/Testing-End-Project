@@ -15,5 +15,5 @@ public interface RouteService {
 
     public void setRoutes();
 
-    public void createBookingSupplier(Route route);
+    public boolean createBookingSupplier(Route route);
 }

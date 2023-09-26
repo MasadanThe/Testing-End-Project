@@ -58,8 +58,9 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public void createBookingSupplier(Route route){
+    public boolean createBookingSupplier(Route route){
 
         routeRepository.save(route);
+        return false;
     }
 }
