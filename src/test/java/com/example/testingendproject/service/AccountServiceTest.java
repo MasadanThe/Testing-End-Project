@@ -38,7 +38,7 @@ class AccountServiceTest {
                 .username("Mr.Gostra")
                 .accountType("ADMIN")
                 .contactInformation("8973045653")
-                .paymentInformation("435252432")
+                .paymentInformation("")
                 .paymentHistory("342432,7675,322")
                 .activeBookings("").build();
         accountService.createAccount(account2);
@@ -189,6 +189,12 @@ class AccountServiceTest {
     void verifyWeCantAddABookingForAUserThatDoesNotExist() {
 
         assertEquals(false, accountService.addBooking("55", "Mr.NotExist"));
+
+    }
+    @Test
+    void verifyWeCantAddABookingForAUserWithoutPaymentInformation() {
+
+        assertEquals(true, accountService.addBooking("55", "Mr.Gostra"));
 
     }
 
