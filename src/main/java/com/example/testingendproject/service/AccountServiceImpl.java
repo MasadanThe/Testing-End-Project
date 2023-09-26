@@ -48,7 +48,11 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public void deleteAccount(String username){
-        Account account = findByUsername(username);
+        Account foundAccount = findByUsername(username);
+        if(foundAccount == null || foundAccount.getUsername().isEmpty())
+        {
+
+        }
         accountRepository.delete(account);
     }
 
