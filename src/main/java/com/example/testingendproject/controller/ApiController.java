@@ -15,7 +15,7 @@ public class ApiController {
 
     @Autowired
     AuthService authService;
-    @Autowired
+    @Autowired(required = false)
     AccountService accountService;
 
     @PostMapping("create_account")
