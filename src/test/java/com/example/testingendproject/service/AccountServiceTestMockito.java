@@ -60,4 +60,12 @@ class AccountServiceTestMockito {
 
         assertEquals("1,5,4,3,7,8", accountService.findByUsername("Mr.Cool").getActiveBookings());
     }
+
+    @Test
+    void verifyThatYouCantAddABookingWithoutUsername(){
+        when(paymentExternal.checkPayment(any())).thenReturn("6457");
+        accountService.addBooking("8",null);
+
+        assertEquals(true, accountService.addBooking("8",null));
+    }
 }
