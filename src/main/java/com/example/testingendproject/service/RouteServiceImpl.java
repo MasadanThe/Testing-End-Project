@@ -21,7 +21,7 @@ public class RouteServiceImpl implements RouteService{
 
 
     @Override
-    public void updateSale(Long id, Long salePrice, String username){
+    public boolean updateSale(Long id, Long salePrice, String username){
         List<Route> routeList = getRoutes();
         Route foundRoute = new Route();
         for (Route route: routeList) {
@@ -32,6 +32,7 @@ public class RouteServiceImpl implements RouteService{
 
         }
         createBookingSupplier(foundRoute);
+        return false;
     }
 
     @Override
