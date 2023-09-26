@@ -15,6 +15,8 @@ import java.util.List;
 @Entity
 @Builder
 public class Account {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // AUTO_INCREMENT
     private long id;
@@ -24,4 +26,14 @@ public class Account {
     private String paymentHistory;
     private String activeBookings;
     private String accountType;
+
+    public Account(String username, String contactInformation, String paymentInformation, String paymentHistory, String activeBookings, String accountType){
+        this.username = username;
+        this.contactInformation = contactInformation;
+        this.paymentInformation = paymentInformation;
+        this.paymentHistory = paymentHistory;
+        this.activeBookings = activeBookings;
+        this.accountType = accountType;
+
+    }
 }
