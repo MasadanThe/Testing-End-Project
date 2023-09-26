@@ -52,4 +52,12 @@ class AccountServiceTestMockito {
 
         verify(paymentExternal, times(1)).checkPayment(any());
     }
+
+    @Test
+    void verifyThatYouCanAddABooking(){
+        when(paymentExternal.checkPayment(any())).thenReturn("6457");
+        accountService.addBooking("8","Mr.Cool");
+
+        assertEquals("1,5,4,3,2", accountService.findByUsername("Mr.Cool").getActiveBookings());
+    }
 }
