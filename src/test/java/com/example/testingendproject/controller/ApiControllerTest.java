@@ -27,12 +27,12 @@ class ApiControllerTest {
     void testEndToEndCreateAccount() throws Exception {
         mockMvc.perform(post("/create_account").
                 content(asJsonString(new Account("Test", "435534534", "432243342", "2", "3", "User"))))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
     }
 
 
     /*
-    OBS DENNA METOD UNDER 'asJsonString' ÄR DIREKT KOPIERAD FRÅN
+    OBS DENNA METOD NAMNGED 'asJsonString' ÄR DIREKT KOPIERAD FRÅN
     https://howtodoinjava.com/spring-boot2/testing/spring-boot-mockmvc-example/
     */
     public static String asJsonString(final Object obj) {
