@@ -111,7 +111,7 @@ class RouteServiceTest {
     }
 
     @Test
-    void verifyWeCantAddToTheDatabaseWithNoContractorName() {
+    void verifyWeCantAddToTheDatabaseWithNoName() {
         var route1 = Route.builder()
                 .destinationEnd("Örebro")
                 .destinationStart("Köpenhamn")
