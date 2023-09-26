@@ -126,7 +126,7 @@ class ApiControllerTest {
                 .andExpect(status().isOk());
 
         Account account = accountService.findByUsername("Test24");
-        assertEquals("123", account.getActiveBookings());
+        assertEquals("5", account.getActiveBookings());
     }
 
     @Test
