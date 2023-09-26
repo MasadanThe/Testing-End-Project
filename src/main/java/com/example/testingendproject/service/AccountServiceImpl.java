@@ -59,6 +59,13 @@ public class AccountServiceImpl implements AccountService{
 
     public boolean addBooking(String id, String username){
         Account foundAccount = findByUsername(username);
+
+        //Checks if the user exist
+        if(foundAccount == null || foundAccount.getUsername().isEmpty())
+        {
+            return false;
+        }
+
         String paymentCode = paymentExternal.checkPayment();
         if(!paymentCode.equals("0")){
             //Separates payments and active bookings with ','
